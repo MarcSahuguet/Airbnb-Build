@@ -40,14 +40,14 @@ function UserMenu({ currentUser }: Props) {
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
           onClick={onRent}
         >
-          Airbnb your Home
+          Envie de contribuer ?
         </div>
         <div
           onClick={toggleOpen}
-          className="p-4 md:py-1 md:px-2 border-[1px] flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+          className="bg-white p-3 md:py-1 md:px-2 border-[1px] flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
@@ -86,7 +86,7 @@ function UserMenu({ currentUser }: Props) {
                   onClick={() => router.push("/properties")}
                   label="My properties"
                 />
-                <MenuItem onClick={onRent} label="Airbnb your home" />
+                <MenuItem onClick={onRent} label="Envie de contribuer ?" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>

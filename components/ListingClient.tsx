@@ -1,7 +1,7 @@
 "use client";
 
 import useLoginModel from "@/hook/useLoginModal";
-import { SafeReservation, SafeUser, safeListing } from "@/types";
+import { Itinerary, SafeReservation, SafeUser } from "@/types";
 import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -14,6 +14,7 @@ import ListingHead from "./listing/ListingHead";
 import ListingInfo from "./listing/ListingInfo";
 import ListingReservation from "./listing/ListingReservation";
 import { categories } from "./navbar/Categories";
+import MapOpen from "./MapOpen";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -22,35 +23,42 @@ const initialDateRange = {
 };
 
 type Props = {
-  reservations?: SafeReservation[];
-  listing: safeListing & {
-    user: SafeUser;
-  };
+  //reservations?: SafeReservation[];
+  itinerary: Itinerary 
+  //& {user: SafeUser;};
   currentUser?: SafeUser | null;
+  params: { slug: string, option: number };
 };
 
-function ListingClient({ reservations = [], listing, currentUser }: Props) {
+function ListingClient({ itinerary, currentUser, params }: Props) {
   const router = useRouter();
   const loginModal = useLoginModel();
-
+  /*
   const disableDates = useMemo(() => {
     let dates: Date[] = [];
+      reservations.forEach((reservation) => {
+        const range = eachDayOfInterval({
+          start: new Date(reservation.startDate),
+          end: new Date(reservation.endDate),
+        });
 
-    reservations.forEach((reservation) => {
-      const range = eachDayOfInterval({
-        start: new Date(reservation.startDate),
-        end: new Date(reservation.endDate),
+        dates = [...dates, ...range];
       });
 
-      dates = [...dates, ...range];
-    });
-
-    return dates;
-  }, [reservations]);
-
+      return dates;
+    }, [reservations]);
+  */
   const [isLoading, setIsLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(listing.price);
+  //const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
+  const option =  1; //params.option;
+
+  const stepsOption = itinerary.stepsOptions.filter(
+    (stepsOption) => stepsOption.option === option
+  )[0];
+  const steps = itinerary.stepsOptions.filter(
+    (stepsOption) => stepsOption.option === option
+  )[0].steps;
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
@@ -61,10 +69,10 @@ function ListingClient({ reservations = [], listing, currentUser }: Props) {
 
     axios
       .post("/api/reservations", {
-        totalPrice,
+        //totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,
-        listingId: listing?.id,
+        ItineraryId: itinerary?.slug.current,
       })
       .then(() => {
         toast.success("Success!");
@@ -77,49 +85,50 @@ function ListingClient({ reservations = [], listing, currentUser }: Props) {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal]);
+  }, [ dateRange, itinerary?.slug, router, currentUser, loginModal]);
+  /*
+    useEffect(() => {
+      if (dateRange.startDate && dateRange.endDate) {
+        const dayCount = differenceInCalendarDays(
+          dateRange.endDate,
+          dateRange.startDate
+        );
 
-  useEffect(() => {
-    if (dateRange.startDate && dateRange.endDate) {
-      const dayCount = differenceInCalendarDays(
-        dateRange.endDate,
-        dateRange.startDate
-      );
-
-      if (dayCount && listing.price) {
-        setTotalPrice(dayCount * listing.price);
-      } else {
-        setTotalPrice(listing.price);
+        if (dayCount && listing.price) {
+          setTotalPrice(dayCount * listing.price);
+        } else {
+          setTotalPrice(listing.price);
+        }
       }
-    }
-  }, [dateRange, listing.price]);
-
+    }, [dateRange, listing.price]);
+  */
   const category = useMemo(() => {
-    return categories.find((item) => item.label === listing.category);
-  }, [listing.category]);
+    return categories.find((item) => item.label === itinerary.moods[0].name);
+  }, [itinerary.moods]);
 
   return (
     <Container>
-      <div className="max-w-screen-lg mx-auto">
+      <div className="max-w-screen-lg mx-auto pt-16">
         <div className="flex flex-col gap-6">
+          
           <ListingHead
-            title={listing.title}
-            imageSrc={listing.imageSrc}
-            locationValue={listing.locationValue}
-            id={listing.id}
+            title={itinerary.cityEnd}
+            imageSrc={itinerary.images}
+            locationValue={itinerary.cityStart}
+            id={itinerary.slug?.current}
             currentUser={currentUser}
           />
           <div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6">
+           
             <ListingInfo
-              user={listing.user}
               category={category}
-              description={listing.description}
-              roomCount={listing.roomCount}
-              guestCount={listing.guestCount}
-              bathroomCount={listing.bathroomCount}
-              locationValue={listing.locationValue}
+              locationValue={itinerary.cityEnd.countryName}
+              steps={steps}
             />
+            
             <div className="order-first mb-10 md:order-last md:col-span-3">
+             <MapOpen steps={steps} />
+             {/*
               <ListingReservation
                 price={listing.price}
                 totalPrice={totalPrice}
@@ -129,7 +138,9 @@ function ListingClient({ reservations = [], listing, currentUser }: Props) {
                 disabled={isLoading}
                 disabledDates={disableDates}
               />
+              */}
             </div>
+  
           </div>
         </div>
       </div>

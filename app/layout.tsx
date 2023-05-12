@@ -6,19 +6,20 @@ import RegisterModal from "@/components/models/RegisterModal";
 import RentModal from "@/components/models/RentModal";
 import SearchModal from "@/components/models/SearchModal";
 import Navbar from "@/components/navbar/Navbar";
-import { Nunito } from "next/font/google";
+import { barlow, inter, IntegraBold, nunito } from "./fonts";
+import cx from 'clsx';
+
 import "../styles/globals.css";
 import getCurrentUser from "./actions/getCurrentUser";
+import Hero from "@/components/navbar/Hero";
 
 export const metadata = {
-  title: "Airbnb Clone",
-  description: "Airbnb Clone",
-  icons: "https://www.seekpng.com/png/full/957-9571167_airbnb-png.png",
+  title: "Hourrail !",
+  description: "Le voyage sur les bons rails !",
+  icons: "https://cdn.sanity.io/images/l1a05fsu/production/d3da640ae385ca64169ab3a7f40ce8daac9c7e77-88x94.png",
 };
 
-const font = Nunito({
-  subsets: ["latin"],
-});
+
 
 export default async function RootLayout({
   children,
@@ -29,16 +30,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={font.className}>
-        <ClientOnly>
-          <ToastContainerBar />
-          <SearchModal />
-          <RegisterModal />
-          <LoginModal />
-          <RentModal />
-          <Navbar currentUser={currentUser} />
-        </ClientOnly>
-        <div className="pb-20 pt-28">{children}</div>
+      <body className={`${barlow.variable} ${inter.variable} ${IntegraBold.variable} ${nunito.variable} font-default`}>
+        <div className="pb-20">{children}</div>
         <Footer />
       </body>
     </html>

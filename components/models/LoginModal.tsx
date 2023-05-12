@@ -101,7 +101,7 @@ function LoginModal({}: Props) {
           {`Didn't have an Account?`}{" "}
           <span
             onClick={toggle}
-            className="text-neutral-800 cursor-pointer hover:underline"
+            className="text-neutral-800 cursor-pointer hover:underline pl-2"
           >
             Create an Account
           </span>

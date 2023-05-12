@@ -13,11 +13,12 @@ import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
 import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
 import Modal from "./Modal";
+import Durations from "../inputs/Durations";
 
 enum STEPS {
   LOCATION = 0,
-  DATE = 1,
-  INFO = 2,
+  DURATION = 1,
+  //DATE,
 }
 
 type Props = {};
@@ -32,6 +33,7 @@ function SearchModal({}: Props) {
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
   const [bathroomCount, setBathroomCount] = useState(1);
+  const [duration, setDuration] = useState<String>("1-3 days");
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
@@ -55,7 +57,7 @@ function SearchModal({}: Props) {
   };
 
   const onSubmit = useCallback(async () => {
-    if (step !== STEPS.INFO) {
+    if (step !== STEPS.DURATION) {
       return onNext();
     }
 
@@ -71,6 +73,7 @@ function SearchModal({}: Props) {
       guestCount,
       roomCount,
       bathroomCount,
+      duration,
     };
 
     if (dateRange.startDate) {
@@ -104,10 +107,11 @@ function SearchModal({}: Props) {
     dateRange,
     onNext,
     params,
+    duration,
   ]);
 
   const actionLabel = useMemo(() => {
-    if (step === STEPS.INFO) {
+    if (step === STEPS.DURATION) {
       return "Search";
     }
 
@@ -137,6 +141,21 @@ function SearchModal({}: Props) {
     </div>
   );
 
+  if (step === STEPS.DURATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Combien de temps as tu?"
+          subtitle="Que tout le monde soit dispo!"
+        />
+        <Durations
+          onChange={(value) => setDuration(value)}
+          value={duration}
+        />
+      </div>
+    );
+  }
+/*
   if (step === STEPS.DATE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
@@ -151,6 +170,8 @@ function SearchModal({}: Props) {
       </div>
     );
   }
+
+ 
 
   if (step === STEPS.INFO) {
     bodyContent = (
@@ -181,6 +202,7 @@ function SearchModal({}: Props) {
       </div>
     );
   }
+  */
 
   return (
     <Modal
@@ -190,7 +212,7 @@ function SearchModal({}: Props) {
       secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
       secondaryActionLabel={secondActionLabel}
       title="Filters"
-      actionLabel="Search"
+      actionLabel={actionLabel}
       body={bodyContent}
     />
   );

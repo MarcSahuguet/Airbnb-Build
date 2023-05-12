@@ -8,8 +8,8 @@ import Heading from "../Heading";
 import HeartButton from "../HeartButton";
 
 type Props = {
-  title: string;
-  locationValue: string;
+  title:  { countryName: string; cityName: string},
+  locationValue: { countryName: string; cityName: string}
   imageSrc: string;
   id: string;
   currentUser?: SafeUser | null;
@@ -22,14 +22,12 @@ function ListingHead({
   id,
   currentUser,
 }: Props) {
-  const { getByValue } = useCountries();
-  const location = getByValue(locationValue);
 
   return (
     <>
       <Heading
-        title={title}
-        subtitle={`${location?.region}, ${location?.label}`}
+        title={`${title.cityName}, ${title.countryName}`}
+        subtitle={`${locationValue.cityName}, ${locationValue.countryName}`}
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}

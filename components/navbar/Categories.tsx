@@ -4,64 +4,51 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { BsSnow } from "react-icons/bs";
 import { FaSkiing } from "react-icons/fa";
 import {
-  GiBarn,
+  GiSleepingBag,
   GiBoatFishing,
   GiCactus,
   GiCastle,
   GiCaveEntrance,
   GiForestCamp,
   GiIsland,
-  GiWindmill,
+  GiSubway,
+  GiSailboat
 } from "react-icons/gi";
 import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
+import getMoods from "@/app/actions/getMoods";
 
 export const categories = [
   {
-    label: "Beach",
+    label: "Plage",
     icon: TbBeach,
     description: "This property is close to the beach!",
   },
   {
-    label: "Windmills",
-    icon: GiWindmill,
-    description: "This property is has windmills!",
-  },
-  {
-    label: "Modern",
-    icon: MdOutlineVilla,
-    description: "This property is modern!",
-  },
-  {
-    label: "Countryside",
+    label: "Montagne",
     icon: TbMountain,
     description: "This property is in the countryside!",
   },
   {
-    label: "Pools",
-    icon: TbPool,
-    description: "This is property has a beautiful pool!",
-  },
-  {
-    label: "Islands",
+    label: "Iles",
     icon: GiIsland,
     description: "This property is on an island!",
   },
   {
-    label: "Lake",
+    label: "Lacs",
     icon: GiBoatFishing,
     description: "This property is near a lake!",
   },
   {
-    label: "Skiing",
+    label: "Ski",
     icon: FaSkiing,
     description: "This property has skiing activies!",
   },
   {
-    label: "Castles",
+    label: "Chateau",
     icon: GiCastle,
     description: "This property is an ancient castle!",
   },
@@ -76,7 +63,7 @@ export const categories = [
     description: "This property offers camping activities!",
   },
   {
-    label: "Arctic",
+    label: "Laponie",
     icon: BsSnow,
     description: "This property is in arctic environment!",
   },
@@ -86,23 +73,26 @@ export const categories = [
     description: "This property is in the desert!",
   },
   {
-    label: "Barns",
-    icon: GiBarn,
-    description: "This property is in a barn!",
+    label: "Voile",
+    icon: GiSailboat,
+    description: "This property offers sailing activities!",
   },
   {
-    label: "Lux",
-    icon: IoDiamond,
-    description: "This property is brand new and luxurious!",
+    label: "Nuit",
+    icon: GiSleepingBag,
+    description: "This property is near a train station!",
   },
 ];
 
+
+
 type Props = {};
 
-function Categories({}: Props) {
+ function Categories({}: Props) {
   const params = useSearchParams();
   const category = params?.get("category");
   const pathname = usePathname();
+  //const moods = await getMoods();
 
   const isMainPage = pathname === "/";
 

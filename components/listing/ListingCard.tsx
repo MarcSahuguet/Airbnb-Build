@@ -1,7 +1,7 @@
 "use client";
 
 import useCountries from "@/hook/useCountries";
-import { SafeReservation, SafeUser, safeListing } from "@/types";
+import { ItineraryCardType, SafeReservation, SafeUser, safeItinerary } from "@/types";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import Button from "../Button";
 import HeartButton from "../HeartButton";
 
 type Props = {
-  data: safeListing;
+  data: ItineraryCardType;
   reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
@@ -31,8 +31,8 @@ function ListingCard({
 }: Props) {
   const router = useRouter();
   const { getByValue } = useCountries();
-
-  const location = getByValue(data.locationValue);
+  data.price = 100;
+  const location = getByValue(data.cityEnd.countryName);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -73,7 +73,7 @@ function ListingCard({
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      onClick={() => router.push(`/listings/${data.id}`)}
+      onClick={() => router.push(`/listings/${data.slug.current}`)}
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col gap-2 w-full">
@@ -81,18 +81,19 @@ function ListingCard({
           <Image
             fill
             className="object-cover h-full w-full group-hover:scale-110 transition"
-            src={data.imageSrc}
+            src={data.image}
             alt="listing"
           />
           <div className="absolute top-3 right-3">
-            <HeartButton listingId={data.id} currentUser={currentUser} />
+            <HeartButton listingId={data._id} currentUser={currentUser} />
           </div>
         </div>
         <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
+          {/*location?.region}, {location?.label*/}
+          {data.cityEnd.cityName}, {data.cityEnd.countryName}
         </div>
         <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
+          {reservationDate || data.moods.slice(0,2).map((mood) => mood.name).join(", ")}
         </div>
         <div className="flex flex-row items-center gap-">
           <div className="flex gap-1 font-semibold">

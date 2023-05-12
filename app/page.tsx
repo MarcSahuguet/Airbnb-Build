@@ -3,17 +3,24 @@ import Container from "@/components/Container";
 import EmptyState from "@/components/EmptyState";
 import ListingCard from "@/components/listing/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings, { IListingsParams } from "./actions/getListings";
+import getItineraries, { IItinerariesParams } from "./actions/getItineraries";
+import { ItineraryCardType, safeListing } from "@/types";
+import ToastContainerBar from "@/components/ToastContainerBar";
+import SearchModal from "@/components/models/SearchModal";
+import RegisterModal from "@/components/models/RegisterModal";
+import LoginModal from "@/components/models/LoginModal";
+import RentModal from "@/components/models/RentModal";
+import Hero from "@/components/navbar/Hero";
 
 interface HomeProps {
-  searchParams: IListingsParams;
+  searchParams: IItinerariesParams;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const listing = await getListings(searchParams);
+  const itineraries = await getItineraries(searchParams);
   const currentUser = await getCurrentUser();
 
-  if (listing.length === 0) {
+  if (itineraries.length === 0) {
     return (
       <ClientOnly>
         <EmptyState showReset />
@@ -23,13 +30,20 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <ClientOnly>
+      <ToastContainerBar />
+      <SearchModal />
+      <RegisterModal />
+      <LoginModal />
+      <RentModal />
+      <Hero currentUser={currentUser} />
+  
       <Container>
-        <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-8 overflow-x-hidden">
-          {listing.map((list) => {
+        <div className="pt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-8 overflow-x-hidden">
+          {itineraries.map((itinerary: ItineraryCardType) => {
             return (
               <ListingCard
-                key={list.id}
-                data={list}
+                key={itinerary._id}
+                data={itinerary}
                 currentUser={currentUser}
               />
             );

@@ -6,7 +6,9 @@
   body {
     @apply !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-[#FF5A5F];
   }
-}
+} 
+
+ 
 
 html,
 body,
