@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 
 interface IParams {
-  listingId?: string;
+  listingId?: number;
 }
 
 export default async function getListingById(params: IParams) {
