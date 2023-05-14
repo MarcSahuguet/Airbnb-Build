@@ -11,9 +11,10 @@ import { Range } from "react-date-range";
 import Heading from "../Heading";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
-import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
 import Modal from "./Modal";
 import Durations from "../inputs/Durations";
+import { Itinerary } from "@/types";
+import CitySelect from "../inputs/CitySelect";
 
 enum STEPS {
   LOCATION = 0,
@@ -21,14 +22,17 @@ enum STEPS {
   //DATE,
 }
 
-type Props = {};
+type Props = {
+  citiesStart: Itinerary["cityStart"][];
+  citiesEnd: Itinerary["cityEnd"][];
+};
 
-function SearchModal({}: Props) {
+function SearchModal({citiesStart, citiesEnd}: Props) {
   const router = useRouter();
   const params = useSearchParams();
   const searchModel = useSearchModal();
 
-  const [location, setLocation] = useState<CountrySelectValue>();
+  const [location, setLocation] = useState<Itinerary["cityStart"]>();
   const [step, setStep] = useState(STEPS.LOCATION);
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
@@ -69,7 +73,7 @@ function SearchModal({}: Props) {
 
     const updatedQuery: any = {
       ...currentQuery,
-      locationValue: location?.value,
+      locationValue: location?.cityName,
       guestCount,
       roomCount,
       bathroomCount,
@@ -129,15 +133,17 @@ function SearchModal({}: Props) {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Where do you wanna go?"
-        subtitle="Find the perfect location!"
+        title="Où sera ton aventure?"
+        subtitle="Trouve LA destination"
       />
-      <CountrySelect
+      <CitySelect
         value={location}
-        onChange={(value) => setLocation(value as CountrySelectValue)}
+        citiesStart={citiesStart}
+        citiesEnd={citiesEnd}
+        onChange={(value) => setLocation(value as Itinerary["cityStart"])}
       />
       <hr />
-      <Map center={location?.latlng} />
+      {/* <Map center={location?.cityLocation} />*/}
     </div>
   );
 

@@ -21,11 +21,10 @@ function Search({}: Props) {
 
   const locationLabel = useMemo(() => {
     if (locationValue) {
-      return getByValue(locationValue as string)?.label;
+      return locationValue;
     }
-
-    return "Anywhere";
-  }, [getByValue, locationValue]);
+    return "N'importe où";
+  }, [locationValue]);
 
   const durationLabel = useMemo(() => {
     if (startDate && endDate) {
@@ -40,7 +39,7 @@ function Search({}: Props) {
       return `${diff} Days`;
     }
 
-    return "Any Week";
+    return "Quand ?";
   }, [startDate, endDate]);
 
   const guessLabel = useMemo(() => {
@@ -48,7 +47,7 @@ function Search({}: Props) {
       return `${guestCount} Guests`;
     }
 
-    return "Add Guests";
+    return "Ajouter invités";
   }, []);
 
   return (
@@ -58,11 +57,11 @@ function Search({}: Props) {
     >
       <div className="flex flex-row items-center justify-between">
         <div className="text-sm font-semibold px-6">{locationLabel}</div>
-        <div className="hidden sm:block text-losm font-semibold px-6 border-x-[1px] flex-1 text-center">
+        <div className="hidden sm:block text-sm font-semibold px-6 border-l-[1px] flex-1 text-center">
           {durationLabel}
         </div>
-        <div className="text-sm pl-6 pr-2 text-gray-600 flex flex-row items-center gap-3">
-          <div className="hidden sm:block text-center">{guessLabel}</div>
+        <div className="text-sm pl-0 pr-2 text-gray-600 flex flex-row items-center gap-3">
+          {/* <div className="hidden sm:block text-center">{guessLabel}</div> */}
           <div className="p-2 bg-hourrail-orange rounded-full text-white">
             <BiSearch size={18} />
           </div>

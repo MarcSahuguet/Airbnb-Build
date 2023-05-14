@@ -1,12 +1,13 @@
 
 import Navbar from "@/components/navbar/Navbar";
 import "@/styles/globals.css";
-import getCurrentUser from "./../actions/getCurrentUser";
+import getCurrentUser from "../actions/getCurrentUser";
 import SearchModal from "@/components/models/SearchModal";
 import RegisterModal from "@/components/models/RegisterModal";
 import LoginModal from "@/components/models/LoginModal";
 import RentModal from "@/components/models/RentModal";
 import ToastContainerBar from "@/components/ToastContainerBar";
+import getCities from "../actions/getCities";
 
 export const metadata = {
   title: "Hourrail !",
@@ -21,14 +22,15 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const currentUser = await getCurrentUser();
+  const {citiesStart, citiesEnd} = await getCities();
 
   return (
     <div>
         <ToastContainerBar />
-        <SearchModal />
+        <SearchModal citiesStart={citiesStart} citiesEnd={citiesEnd} />
         <RegisterModal />
         <LoginModal />
-        <RentModal />
+        <RentModal citiesStart={citiesStart} citiesEnd={citiesEnd}  />
         <Navbar currentUser={currentUser} />
         <div className="pt-14">{children}</div>
     </div>

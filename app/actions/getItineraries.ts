@@ -34,7 +34,7 @@ import clientConfig from '@/sanity/config/client-config'
           highlight,
           slug,
           _id
-        } | order(highlight desc, cityEnd.countryName asc)`
+        } | order(highlight desc, cityStart.countryName desc)`
       )
         
       return itineraries;

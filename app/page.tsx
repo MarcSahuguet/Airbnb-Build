@@ -11,6 +11,7 @@ import RegisterModal from "@/components/models/RegisterModal";
 import LoginModal from "@/components/models/LoginModal";
 import RentModal from "@/components/models/RentModal";
 import Hero from "@/components/navbar/Hero";
+import getCities from "./actions/getCities";
 
 interface HomeProps {
   searchParams: IItinerariesParams;
@@ -19,6 +20,7 @@ interface HomeProps {
 export default async function Home({ searchParams }: HomeProps) {
   const itineraries = await getItineraries(searchParams);
   const currentUser = await getCurrentUser();
+  const {citiesStart, citiesEnd} = await getCities();
 
   if (itineraries.length === 0) {
     return (
@@ -31,14 +33,14 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <ClientOnly>
       <ToastContainerBar />
-      <SearchModal />
+      <SearchModal citiesStart={citiesStart} citiesEnd={citiesEnd} />
       <RegisterModal />
       <LoginModal />
-      <RentModal />
+      <RentModal citiesStart={citiesStart} citiesEnd={citiesEnd} />
       <Hero currentUser={currentUser} />
   
       <Container>
-        <div className="pt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-8 overflow-x-hidden">
+        <div className="pt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-8 overflow-x-hidden">
           {itineraries.map((itinerary: ItineraryCardType) => {
             return (
               <ListingCard

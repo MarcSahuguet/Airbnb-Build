@@ -11,13 +11,17 @@ import { toast } from "react-toastify";
 import Heading from "../Heading";
 import CategoryInput from "../inputs/CategoryInput";
 import Counter from "../inputs/Counter";
-import CountrySelect from "../inputs/CountrySelect";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
 import { categories } from "../navbar/Categories";
 import Modal from "./Modal";
+import CitySelect from "../inputs/CitySelect";
+import { Itinerary } from "@/types";
 
-type Props = {};
+type Props = {
+  citiesStart: Itinerary["cityStart"][];
+  citiesEnd: Itinerary["cityEnd"][];
+};
 
 enum STEPS {
   CATEGORY = 0,
@@ -28,7 +32,7 @@ enum STEPS {
   PRICE = 5,
 }
 
-function RentModal({}: Props) {
+function RentModal({citiesEnd, citiesStart}: Props) {
   const router = useRouter();
   const rentModel = useRentModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
@@ -154,8 +158,10 @@ function RentModal({}: Props) {
           title="Where is your place located?"
           subtitle="Help guests find you!"
         />
-        <CountrySelect
+        <CitySelect
           value={location}
+          citiesEnd={citiesEnd}
+          citiesStart={citiesStart}
           onChange={(value) => setCustomValue("location", value)}
         />
         <Map center={location?.latlng} />

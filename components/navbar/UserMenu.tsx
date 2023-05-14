@@ -12,6 +12,7 @@ import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
+import useFeedbackModal from "@/hook/useFeedbackModal";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -21,6 +22,7 @@ function UserMenu({ currentUser }: Props) {
   const router = useRouter();
   const registerModel = useRegisterModal();
   const loginModel = useLoginModel();
+  const feedbackModal = useFeedbackModal();
   const rentModel = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,22 +34,25 @@ function UserMenu({ currentUser }: Props) {
     if (!currentUser) {
       return loginModel.onOpen();
     }
-
     rentModel.onOpen();
   }, [currentUser, loginModel, rentModel]);
+
+  const onFeedback = useCallback(() => { 
+      return feedbackModal.onOpen();
+  }, [loginModel, rentModel]);
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
+          className="hidden md:block text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
           onClick={onRent}
         >
           Envie de contribuer ?
         </div>
         <div
           onClick={toggleOpen}
-          className="bg-white p-3 md:py-1 md:px-2 border-[1px] flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+          className="bg-white md:py-1 md:pl-2.5 md:pr-1 border-[1px] flex flex-row items-center gap-2.5 rounded-full cursor-pointer hover:shadow-md transition"
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
@@ -92,8 +97,10 @@ function UserMenu({ currentUser }: Props) {
               </>
             ) : (
               <>
-                <MenuItem onClick={loginModel.onOpen} label="Login" />
-                <MenuItem onClick={registerModel.onOpen} label="Sign up" />
+                <MenuItem onClick={loginModel.onOpen} label="Se connecter" />
+                <MenuItem onClick={registerModel.onOpen} label="Créer un compte" />
+                <MenuItem onClick={() => router.push("https://fr.tipeee.com/hourrail")} label="Faire un don ?" />
+                <MenuItem onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")} label="Rejoindre la team" />
               </>
             )}
           </div>

@@ -59,13 +59,14 @@ function RegisterModal({}: Props) {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Airbnb-Clone"
-        subtitle="Create an Account!"
+        title="Bienvenue chez HOURRAIL ! 🚂"  
+
+        subtitle="Crée ton compte ici"
         center
       />
       <Input
         id="email"
-        label="Email Address"
+        label="Email"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -73,7 +74,7 @@ function RegisterModal({}: Props) {
       />
       <Input
         id="name"
-        label="User Name"
+        label="Nom d'utilisateur"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -81,7 +82,7 @@ function RegisterModal({}: Props) {
       />
       <Input
         id="password"
-        label="Password"
+        label="Mot de passe"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -95,25 +96,25 @@ function RegisterModal({}: Props) {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="Continuer avec Google"
         icon={FcGoogle}
         onClick={() => signIn("google")}
       />
       <Button
         outline
-        label="Continue with Facebook"
+        label="Continuer avec Facebook"
         icon={AiFillFacebook}
         onClick={() => signIn("facebook")}
         isColor
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div>
-          Already have an account?{" "}
+          Tu as déjà un compte?{" "}
           <span
             onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Log in
+            Connecte toi
           </span>
         </div>
       </div>
@@ -124,8 +125,8 @@ function RegisterModal({}: Props) {
     <Modal
       disabled={isLoading}
       isOpen={registerModel.isOpen}
-      title="Register"
-      actionLabel="Continue"
+      title="Créer mon compte"
+      actionLabel="Continuer"
       onClose={registerModel.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

@@ -27,7 +27,7 @@ type Props = {
   itinerary: Itinerary 
   //& {user: SafeUser;};
   currentUser?: SafeUser | null;
-  params: { slug: string, option: number };
+  params: { slug?: string, option?: number };
 };
 
 function ListingClient({ itinerary, currentUser, params }: Props) {

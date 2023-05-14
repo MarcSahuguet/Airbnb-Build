@@ -18,8 +18,8 @@ function Logo({large }: Props) {
               alt='Mood image'
               width={140}
               height={140}
-              src='https://cdn.sanity.io/images/l1a05fsu/production/ad2c9e0dc5b4e0777caa378e5a5cf8a7b71ae94e-706x211.png'
-              className='block self-center ml-2 hover:animate-waving hover:rotate-2 transition-all duration-200 cursor-pointer'
+              src='/Logo_hourrail.png'
+              className='block self-center -ml-2 hover:animate-waving hover:rotate-2 transition-all duration-200 cursor-pointer'
             />
         ) : (
           <>

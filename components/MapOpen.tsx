@@ -123,7 +123,7 @@ const MapOpen = ({ steps }: MapProps) => {
 
   return (
     <div
-      className='map-container h-[300px] w-full md:h-[500px] md:w-full lg:w-[500px] rounded-md'
+      className='map-container h-[300px] w-full md:h-[500px] md:w-full lg:w-[500px] rounded-xl'
       ref={mapContainer}
     />
   );

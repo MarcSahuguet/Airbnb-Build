@@ -37,7 +37,7 @@ function ListingHead({
           delay: 0.5,
           ease: [0, 0.71, 0.2, 1.01],
         }}
-        className="w-full h-[60vh] overflow-hidden rounded-xl relative"
+        className="w-full sm:h-[60vh] h-[36vh] overflow-hidden rounded-xl relative"
       >
         <Image
           src={imageSrc}

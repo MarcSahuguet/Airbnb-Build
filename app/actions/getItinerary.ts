@@ -48,7 +48,7 @@ import clientConfig from '@/sanity/config/client-config'
           },
           transportMethod->{
             name,
-            icon
+            "icon": icon.asset->url,
           },
           stepTime,
           bookingLink,
