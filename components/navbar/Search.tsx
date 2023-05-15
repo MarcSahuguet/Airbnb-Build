@@ -39,7 +39,7 @@ function Search({}: Props) {
       return `${diff} Days`;
     }
 
-    return "Quand ?";
+    return "Durée ?";
   }, [startDate, endDate]);
 
   const guessLabel = useMemo(() => {

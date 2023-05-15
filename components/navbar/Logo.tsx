@@ -5,19 +5,19 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
-  large?: boolean;
+  Hero?: boolean;
 };
 
-function Logo({large }: Props) {
+function Logo({ Hero }: Props) {
   const router = useRouter();
 
   return (
     <div onClick={() => router.push("/")}>
-        {large ? (
+        {Hero ? (
               <Image
               alt='Mood image'
-              width={140}
-              height={140}
+              width={120}
+              height={120}
               src='/Logo_hourrail.png'
               className='block self-center -ml-2.5 hover:animate-waving hover:rotate-2 transition-all duration-200 cursor-pointer'
             />
@@ -25,8 +25,8 @@ function Logo({large }: Props) {
           <>
             <Image
               alt='Mood image'
-              width={160}
-              height={160}
+              width={180}
+              height={180}
               src='https://cdn.sanity.io/images/l1a05fsu/production/ad2c9e0dc5b4e0777caa378e5a5cf8a7b71ae94e-706x211.png'
               className='hidden sm:block hover:animate-waving hover:rotate-2 transition-all duration-200'
             />

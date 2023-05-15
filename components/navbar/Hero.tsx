@@ -16,10 +16,9 @@ type Props = {
 
 function Hero({ currentUser }: Props) {
   return (
-    <div className="relative w-full z-10 shadow-sm bg-hero bg-cover bg-top" style={{height:"45vh"}}>  
-       
+    <div className="relative w-full z-10 shadow-sm bg-hero bg-cover bg-top sm:bg-center backdrop-brightness-75" style={{height:"45vh"}}>
+      
         <Container>
-          
         <div className="py-4 gap-y-10 flex flex-col justify-center">
           <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
             <div className="flex md:hidden flex-row items-center gap-2">
@@ -30,7 +29,7 @@ function Hero({ currentUser }: Props) {
                 <FaLinkedin className="text-3xl text-white" href="https://www.linkedin.com/company/hourrail/"/>
               </Link>
             </div>
-            <Logo large />
+            <Logo Hero />
             <UserMenu currentUser={currentUser} />
           </div>
           
@@ -40,8 +39,8 @@ function Hero({ currentUser }: Props) {
              */}
           </div>
         </div>
-        <span className="absolute bottom-20 text-white text-2xl sm:text-4xl font-bold text-center font-barlow ">
-            Trouve ta prochaine aventure {" "} sans avion et sans voiture !
+        <span className="absolute left-0 right-0 m-auto bottom-20 text-white text-2xl sm:text-4xl font-bold text-center font-integraBold max-w-3xl ">
+            Trouve ta prochaine aventure {" "} sans avion et sans voiture
           </span>
         </Container>
 

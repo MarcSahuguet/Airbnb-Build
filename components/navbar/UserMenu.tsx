@@ -2,17 +2,16 @@
 
 import useLoginModel from "@/hook/useLoginModal";
 import useRegisterModal from "@/hook/useRegisterModal";
+import useFeedbackModal from "@/hook/useFeedbackModal";
 import useRentModal from "@/hook/useRentModal";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
 import { SafeUser } from "@/types";
 import { signOut } from "next-auth/react";
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
-import useFeedbackModal from "@/hook/useFeedbackModal";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -37,25 +36,30 @@ function UserMenu({ currentUser }: Props) {
     rentModel.onOpen();
   }, [currentUser, loginModel, rentModel]);
 
-  const onFeedback = useCallback(() => { 
-      return feedbackModal.onOpen();
-  }, [loginModel, rentModel]);
+
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          className="hidden md:block text-sm font-semibold  py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
+          className="hidden text-sm font-semibold  py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
           onClick={onRent}
         >
-          Envie de contribuer ?
+          Poster un intinéraire
+        </div>
+        <div
+          className="hidden md:block text-sm font-semibold  py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
+          onClick={() => feedbackModal.onOpen()}
+        >
+          Proposer une amélioration 
         </div>
         <div
           onClick={toggleOpen}
-          className="bg-white md:py-1 md:pl-2.5 md:pr-1 p-2 border-[1px] flex flex-row items-center gap-2.5 rounded-full cursor-pointer hover:shadow-md transition"
+          className="bg-white p-2 border-[1px] flex flex-row items-center gap-2.5 rounded-full cursor-pointer hover:shadow-md transition" //md:py-1 md:pl-2.5 md:pr-1 
         >
           <AiOutlineMenu />
-          <div className="hidden md:block">
+          
+          <div className="hidden">
             {currentUser ? (
               <Avatar src={currentUser?.image!} userName={currentUser?.name} />
             ) : (
