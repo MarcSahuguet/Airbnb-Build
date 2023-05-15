@@ -5,7 +5,7 @@ import useSearchModal from "@/hook/useSearchModal";
 import { differenceInDays } from "date-fns";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiFilter } from "react-icons/bi";
 
 type Props = {};
 
@@ -23,7 +23,7 @@ function Search({}: Props) {
     if (locationValue) {
       return locationValue;
     }
-    return "N'importe où";
+    return "Ville de départ";
   }, [locationValue]);
 
   const durationLabel = useMemo(() => {
@@ -63,7 +63,7 @@ function Search({}: Props) {
         <div className="text-sm pl-0 pr-2 text-gray-600 flex flex-row items-center gap-3">
           {/* <div className="hidden sm:block text-center">{guessLabel}</div> */}
           <div className="p-2 bg-hourrail-orange rounded-full text-white">
-            <BiSearch size={18} />
+            <BiFilter size={18} />
           </div>
         </div>
       </div>

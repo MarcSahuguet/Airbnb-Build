@@ -84,6 +84,9 @@ function ListingCard({
             src={data.image}
             alt="listing"
           />
+          <div className="absolute top-3 left-3 rounded-full py-1 px-2 bg-white text-xs font-integra">
+                Depuis{" "}{data.cityStart.cityName}
+          </div>
           <div className="absolute top-3 right-3">
             <HeartButton listingId={data._id} currentUser={currentUser} />
           </div>

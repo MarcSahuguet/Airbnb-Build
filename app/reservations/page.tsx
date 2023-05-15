@@ -35,10 +35,10 @@ const ReservationsPage = async (props: Props) => {
 
   return (
     <ClientOnly>
-      <ReservationsClient
+      {/*<ReservationsClient
         reservations={reservations}
         currentUser={currentUser}
-      />
+      />*/}
     </ClientOnly>
   );
 };

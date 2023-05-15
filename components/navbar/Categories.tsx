@@ -102,7 +102,7 @@ type Props = {};
 
   return (
     <Container>
-      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
+      <div className="pt-5 flex flex-row items-center justify-between overflow-x-auto">
         {categories.map((items, index) => (
           <CategoryBox
             key={index}

@@ -35,7 +35,9 @@ const TripsPage = async (props: Props) => {
 
   return (
     <ClientOnly>
+      {/*
       <TripsClient reservations={reservations} currentUser={currentUser} />
+      */}
     </ClientOnly>
   );
 };

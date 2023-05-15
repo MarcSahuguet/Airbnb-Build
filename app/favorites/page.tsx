@@ -32,7 +32,7 @@ const FavoritePage = async (props: Props) => {
 
   return (
     <ClientOnly>
-      <FavoritesClient listings={listings} currentUser={currentUser} />
+     {/*  <FavoritesClient listings={listings} currentUser={currentUser} /> */}
     </ClientOnly>
   );
 };

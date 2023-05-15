@@ -45,14 +45,14 @@ function UserMenu({ currentUser }: Props) {
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          className="hidden md:block text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
+          className="hidden md:block text-sm font-semibold  py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
           onClick={onRent}
         >
           Envie de contribuer ?
         </div>
         <div
           onClick={toggleOpen}
-          className="bg-white md:py-1 md:pl-2.5 md:pr-1 border-[1px] flex flex-row items-center gap-2.5 rounded-full cursor-pointer hover:shadow-md transition"
+          className="bg-white md:py-1 md:pl-2.5 md:pr-1 p-2 border-[1px] flex flex-row items-center gap-2.5 rounded-full cursor-pointer hover:shadow-md transition"
         >
           <AiOutlineMenu />
           <div className="hidden md:block">

@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id             Int        @id @default(autoincrement()) 
+  id             String        @id @default(cuid()) @db.VarChar(36)
   name           String?
   email          String?       @unique
   emailVerified  DateTime?
@@ -19,15 +19,15 @@ model User {
   hashedPassword String?
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
-  favoriteIds    String[]       
+  favoriteIds    String[]     @default([])
   accounts       Account[]
   listings       Listing[]
   reservations   Reservation[]
 }
 
 model Account {
-  id                Int  @id @default(autoincrement())
-  userId            Int  
+  id                String  @id @default(cuid()) @db.VarChar(36)
+  userId            String  
   type              String
   provider          String
   providerAccountId String
@@ -44,26 +44,26 @@ model Account {
 }
 
 model Listing {
-  id            Int        @id @default(autoincrement())
+  id            String        @id @default(cuid()) @db.VarChar(36)
   title         String
   description   String
   imageSrc      String
   createdAt     DateTime      @default(now())
   category      String
-  roomCount     Int
-  bathroomCount Int
-  guestCount    Int
+  citystart     String
+  cityend       String
+  mood          String
   locationValue String
-  userId        Int        
+  userId        String        
   price         Int
   user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations  Reservation[]
 }
 
 model Reservation {
-  id         Int   @id @default(autoincrement())
-  userId     Int   
-  listingId  Int   
+  id         String   @id @default(cuid()) @db.VarChar(36)
+  userId     String   
+  listingId  String
   startDate  DateTime
   endDate    DateTime
   totalPrice Int

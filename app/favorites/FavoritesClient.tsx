@@ -1,10 +1,10 @@
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import ListingCard from "@/components/listing/ListingCard";
-import { SafeUser, safeListing } from "@/types";
+import { ItineraryCardType, SafeUser } from "@/types";
 
 type Props = {
-  listings: safeListing[];
+  listings: ItineraryCardType[];
   currentUser?: SafeUser | null;
 };
 
@@ -16,7 +16,7 @@ function FavoritesClient({ listings, currentUser }: Props) {
         {listings.map((listing) => (
           <ListingCard
             currentUser={currentUser}
-            key={listing.id}
+            key={listing._id}
             data={listing}
           />
         ))}
