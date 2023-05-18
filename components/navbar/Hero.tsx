@@ -6,13 +6,8 @@ import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import qs from "query-string";
 import Link from "next/link";
-import CitySelect from "../inputs/CitySelect";
-import { useCallback, useState } from "react";
 import CitySelectTemp from "../inputs/CitySelectTemp";
-import { useRouter, useSearchParams } from "next/navigation";
-
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -51,7 +46,7 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
           </span>
         </Container>
 
-        <div className="absolute inset-x-0 mx-auto max-w-xs -bottom-5 hover:scale-105 duration-150 transform cursor-pointer">
+        <div className="absolute inset-x-0 mx-auto max-w-xs md:max-w-xl -bottom-5 ">
         {/*
         <Search />
         */}

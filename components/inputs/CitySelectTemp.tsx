@@ -52,7 +52,7 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
   );
   
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col md:flex-row gap-1 md:gap-3 justify-center">
       <Select
         placeholder="Ville de départ"
         isClearable
@@ -61,10 +61,12 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
         onChange={(value) => onSubmit(value as Itinerary["cityStart"],"departure")}
         formatOptionLabel={formatOptionLabel}
         classNames={{
-          control: () => "p-3 py-2 border-2",
+          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform",
           input: () => "text-lg",
           option: () => "text-lg",
+          
         }}
+        className="w-full cursor-pointer"
         theme={(theme) => ({
           ...theme,
           borderRadius: 34,
@@ -84,10 +86,11 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
         onChange={(value) => onSubmit(value as Itinerary["cityStart"],"arrival")}
         formatOptionLabel={formatOptionLabel}
         classNames={{
-          control: () => "p-3 py-2 border-2",
+          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform",
           input: () => "text-lg",
           option: () => "text-lg",
         }}
+        className="w-full cursor-pointer"
         theme={(theme) => ({
           ...theme,
           borderRadius: 34,

@@ -1,3 +1,4 @@
+
 import ClientOnly from "@/components/ClientOnly";
 import Container from "@/components/Container";
 import EmptyState from "@/components/EmptyState";
@@ -20,11 +21,28 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const itineraries = await getItineraries(searchParams);
+  const category = searchParams.category;
+  const cityStart = searchParams.departureCity
+  const cityEnd = searchParams.arrivalCity
+
+  const itineraries = await getItineraries();
+  const filteredItineraries = itineraries.filter((itinerary: ItineraryCardType) => {
+    if (itinerary.moods.some(mood => mood.name === category)) {
+      return false;
+    }
+    if (cityStart && itinerary.cityStart.cityName.toLowerCase() !== cityStart) {
+      return false;
+    }
+    if (cityEnd && itinerary.cityEnd.cityName.toLowerCase() !== cityEnd) {
+      return false;
+    }
+    return true;
+  });
+
   const currentUser = await getCurrentUser();
   const {citiesStart, citiesEnd} = await getCities();
 
-  if (itineraries.length === 0) {
+  if (filteredItineraries.length === 0) {
     return (
       <ClientOnly>
         <EmptyState showReset />
@@ -45,7 +63,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
       <Container>
         <div className="pt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-8 overflow-x-hidden">
-          {itineraries.map((itinerary: ItineraryCardType) => {
+          {filteredItineraries.map((itinerary: ItineraryCardType) => {
             return (
               <ListingCard
                 key={itinerary._id}
