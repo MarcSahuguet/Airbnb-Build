@@ -77,7 +77,7 @@ function ListingCard({
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col gap-1.5 w-full">
-        <div className="aspect-square w-full relative overflow-hidden rounded-xl">
+        <div className="sm:aspect-square aspect-video w-full relative overflow-hidden rounded-xl">
           <Image
             fill
             className="object-cover h-full w-full group-hover:scale-110 transition"
@@ -87,16 +87,19 @@ function ListingCard({
           <div className="absolute top-3 left-3 rounded-full py-1 px-2 bg-white text-xs font-integra">
                 Depuis{" "}{data.cityStart.cityName}
           </div>
+          {/*
           <div className="absolute top-3 right-3">
             <HeartButton listingId={data._id} currentUser={currentUser} />
           </div>
+          */}
         </div>
-        <div className="font-semibold text-lg">
-          {/*location?.region}, {location?.label*/}
-          {data.cityEnd.cityName}, {data.cityEnd.countryName}
-        </div>
-        <div className="font-light text-neutral-500">
-          {reservationDate || data.moods.slice(0,2).map((mood) => mood.name).join(", ")}
+        <div className="flex flex-col gap-0.5">
+          <div className="font-semibold text-lg">
+            {data.cityEnd.cityName}, {data.cityEnd.countryName}
+          </div>
+          <div className="font-light text-neutral-500">
+            {reservationDate || data.moods.slice(0,2).map((mood) => mood.name).join(", ")}
+          </div>
         </div>
         {/*
         <div className="flex flex-row items-center gap-">
