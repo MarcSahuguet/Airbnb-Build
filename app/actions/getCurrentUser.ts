@@ -7,7 +7,8 @@ export async function getSession() {
 }
 
 export default async function getCurrentUser() {
-  return null;
+  return null as any;
+
   /*
   try {
     const session = await getSession();
