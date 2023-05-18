@@ -50,8 +50,8 @@ model Listing {
   imageSrc      String
   createdAt     DateTime      @default(now())
   category      String
-  citystart     String
-  cityend       String
+  cityStart     String
+  cityEnd       String
   mood          String
   locationValue String
   userId        String        

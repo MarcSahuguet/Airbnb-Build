@@ -15,6 +15,7 @@ import ListingInfo from "./listing/ListingInfo";
 import ListingReservation from "./listing/ListingReservation";
 import { categories } from "./navbar/Categories";
 import MapOpen from "./MapOpen";
+import BackButton from "./BackButton";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -108,9 +109,10 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
 
   return (
     <Container>
+     
       <div className="max-w-screen-lg mx-auto pt-16">
+      <BackButton/>
         <div className="flex flex-col gap-6">
-          
           <ListingHead
             title={itinerary.cityEnd}
             imageSrc={itinerary.images}
@@ -122,7 +124,7 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
            
             <ListingInfo
               category={category}
-              locationValue={itinerary.cityEnd.countryName}
+              itinerary={itinerary}
               steps={steps}
             />
             

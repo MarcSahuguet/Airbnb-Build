@@ -27,7 +27,7 @@ function CitySelect({ value, onChange, citiesStart }: Props) {
         value={value}
         onChange={(value) => onChange(value as Itinerary["cityStart"])}
         formatOptionLabel={(option: any) => (
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-3 overflow-hidden">
             {/* <Flag code={option.value} className="w-5" /> */}
             <div>
               {option.cityName},

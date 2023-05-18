@@ -36,7 +36,7 @@ function Logo({ Hero }: Props) {
               width={80}
               height={80}
               src='https://cdn.sanity.io/images/l1a05fsu/production/d2eaeb7f80e5211ba75a293cff2e78916265634d-196x210.png'
-              className='mx-auto block sm:hidden'
+              className=' block sm:hidden'
             />
           </>
       )}

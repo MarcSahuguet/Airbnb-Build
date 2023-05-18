@@ -27,7 +27,7 @@ function ListingHead({
     <>
       <Heading
         title={`${title.cityName}, ${title.countryName}`}
-        subtitle={`${locationValue.cityName}, ${locationValue.countryName}`}
+        subtitle={`Depuis ${locationValue.cityName}`}
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}

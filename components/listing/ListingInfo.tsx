@@ -1,7 +1,7 @@
 "use client";
 
 import useCountries from "@/hook/useCountries";
-import { SafeUser } from "@/types";
+import { Itinerary, SafeUser } from "@/types";
 import dynamic from "next/dynamic";
 import React from "react";
 import { IconType } from "react-icons";
@@ -28,7 +28,7 @@ type Props = {
         description: string;
       }
     | undefined;
-  locationValue: string;
+  itinerary: Itinerary;
 };
 
 function ListingInfo({
@@ -37,22 +37,34 @@ function ListingInfo({
   roomCount,
   bathroomCount,
   category,
-  locationValue,
+  itinerary,
   steps,
 }: Props) {
   const { getByValue } = useCountries();
-  const coordinates = getByValue(locationValue)?.latlng;
+  const coordinates = getByValue(itinerary.cityEnd.cityName)?.latlng;
+  const countries = [
+    ...new Set([
+      ...new Set(
+        itinerary.stepsOptions[0].steps.map((step: any) => step.stepCityStart.countryName)
+      ),
+      ...new Set(
+        itinerary.stepsOptions[0].steps.map((step: any) => step.stepCityEnd.countryName)
+      ),
+    ]),
+  ];
 
   return (
     <div className="col-span-4 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <div className=" text-xl font-semibold flex flex-row items-center gap-2">
-          <div>Proposé par</div>
+          <div>Pays traversés</div>
         </div>
         <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
-          <p>{guestCount} temps</p>
-          <p>{roomCount} prix</p>
-          <p>{bathroomCount} type couchette</p>
+        {countries.map(
+          (country, index) =>
+            country +
+            (index !== countries.length - 1 ? ', ' : '')
+        )}
         </div>
       </div>
       <hr />

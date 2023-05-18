@@ -26,13 +26,15 @@ function Footer({}: Props) {
         
         <div className="space-y-4">
           <Logo/>
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-wrap-reverse flex-row items-center gap-2">
+            
               <Link href="https://www.instagram.com/hourrail/">
                 <FaInstagram className="text-3xl text-white"/>
               </Link>
               <Link href="https://www.linkedin.com/company/hourrail/">
                 <FaLinkedin className="text-3xl text-white" href="https://www.linkedin.com/company/hourrail/"/>
               </Link>
+           
               <Link href="https://www.tipeee.com/hourrail">
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -76,10 +78,8 @@ function Footer({}: Props) {
         <div className="space-y-4">
           <h5 className="font-bold">SUPPORT</h5>
           <p>Reporter un bug</p>
-          <p>AirCover</p>
-          <p>Cancellation options</p>
-          <p>Safety information</p>
-          <p>Report a neighborhood concern</p>
+          <p>Comment ça fonctionne</p>
+          <p>Conseils pratiques</p>
         </div>
 
           <div className="space-y-4">

@@ -8,10 +8,11 @@ import { IconType } from "react-icons";
 type Props = {
   icon: IconType;
   label: string;
+  slug: string;
   selected?: boolean;
 };
 
-function CategoryBox({ icon: Icon, label, selected }: Props) {
+function CategoryBox({ icon: Icon, label, slug, selected }: Props) {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -24,10 +25,10 @@ function CategoryBox({ icon: Icon, label, selected }: Props) {
 
     const updatedQuery: any = {
       ...currentQuery,
-      category: label,
+      category: slug,
     };
 
-    if (params?.get("category") === label) {
+    if (params?.get("category") === slug) {
       delete updatedQuery.category;
     }
 
@@ -40,7 +41,7 @@ function CategoryBox({ icon: Icon, label, selected }: Props) {
     );
 
     router.push(url);
-  }, [label, params, router]);
+  }, [slug, params, router]);
 
   return (
     <div

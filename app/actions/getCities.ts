@@ -5,8 +5,9 @@ import clientConfig from '@/sanity/config/client-config'
     try {
       const citiesData = await createClient(clientConfig).fetch(
         groq`*[_type == "itinerary"]{cityStart->{cityName, cityLocation, countryName}, cityEnd->{cityName, cityLocation, countryName}}`)
-        const citiesStart = citiesData.map((city: any) => city.cityStart);
-        const citiesEnd = citiesData.map((city: any) => city.cityEnd);
+        //map cities and avoid cityName duplicates
+        const citiesStart = citiesData.map((city: any) => city.cityStart).filter((city: any, index: any, self: any) => self.indexOf(city) === index);
+        const citiesEnd = citiesData.map((city: any) => city.cityEnd).filter((city: any, index: any, self: any) => self.indexOf(city) === index);
         return {citiesStart, citiesEnd};  
       
     } catch (error: any) {

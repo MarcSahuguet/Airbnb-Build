@@ -2,22 +2,23 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from '@/sanity/config/client-config'
 
   export interface IItinerariesParams {
-        mood?: string;
-        cityStart?: string;
-        cityEnd?: string;
+        category?: string;
+        departureCity?: string;
+        arrivalCity?: string;
   };
   
   export default async function getItineraries(params: IItinerariesParams) {
     try {
         //fake params usage
-        const test = params.mood; 
-        /* *[_type == "itinerary" ${
+        const moodsFilterQuery = `'${params.category}' in moods[]->slug.current`;
+        const cityStartFilterQuery = `'${params.departureCity}' == cityStart->slug.current`;
+        const cityEndFilterQuery = `'${params.arrivalCity}' == cityEnd->slug.current`;        /* *[_type == "itinerary" ${
       context.query?.mood ? '&& ' + moodsFilterQuery : ''
     } ${context.query?.cityStart ? '&& ' + cityStartFilterQuery : ''} ${
     context.query?.cityEnd ? '&& ' + cityEndFilterQuery : ''
   }] */
       const itineraries = createClient(clientConfig).fetch(
-        groq`*[_type == "itinerary"] {
+        `*[_type == "itinerary" ${ params.category ? '&& ' + moodsFilterQuery : '' } ${ params.departureCity ? '&& ' + cityStartFilterQuery : '' } ${ params.arrivalCity ? '&& ' + cityEndFilterQuery : '' }]{
           _id,
           "image": images[0].asset->url,
           cityStart->{cityName, countryName},
@@ -37,8 +38,10 @@ import clientConfig from '@/sanity/config/client-config'
         } | order(highlight desc, cityStart.countryName desc)`
       )
         
-      return itineraries;
+      // return itineraries with mood.name  == params.mood
+        return itineraries;
+
     } catch (error: any) {
       throw new Error(error.message);
-    }
+    } 
   }

@@ -43,7 +43,7 @@ function FeedbackModal({}: Props) {
       text: feedback,
     };
     fetch(
-      'https://hooks.slack.com/services/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',
+      process.env.NEXT_PUBLIC_SLACK_WEBHOOK_URL as string,
       {
         method: 'POST',
         body: JSON.stringify(data),
@@ -60,8 +60,6 @@ function FeedbackModal({}: Props) {
 
   const bodyContent = (
     <div className='flex flex-col items-center justify-center p-3'>
-            <h2 className='text-2xl text-center '>
-Dis nous tout !         </h2>
 
     <form className='flex flex-col items-center justify-center space-y-4'>
       <input
@@ -76,8 +74,8 @@ Dis nous tout !         </h2>
         value={feedback}
         onChange={(e) => setFeedback(e.target.value)}
       />
-      <button onClick={onSubmit} className= 'bg-hourrail-orange text-white font-BarlowMedium hover:border-b-hourrail-rouge-orange border-b-4 border-transparent text-xs sm:text-sm pt-2 pb-1 px-4'>
-        {isLoading ? <p className=' animate-pulse '>Envoi en cours</p> :  'Envoyer'}
+      <button onClick={onSubmit} className= ' text-white font-BarlowMedium hover:border-b-hourrail-rouge-orange border-b-4 border-transparent text-xs sm:text-sm pt-2 pb-1 px-4'>
+        {isLoading ? <p className=' animate-pulse '>Envoi en cours</p> :  ''}
       </button>
     </form>
   </div>
@@ -86,13 +84,6 @@ Dis nous tout !         </h2>
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button
-        outline
-        label="Rejoindre la team"
-        icon={FcGoogle}
-        onClick={() => () => router.push("/auth/google")}
-      />
-     
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div>
           Plus on est de fous, plus on décarbone !
@@ -104,8 +95,8 @@ Dis nous tout !         </h2>
     <Modal
       disabled={isLoading}
       isOpen={modalstate.isOpen}
-      title="Login"
-      actionLabel="Continue"
+      title="Dis nous tout !"
+      actionLabel="Envoyer"
       onClose={modalstate.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

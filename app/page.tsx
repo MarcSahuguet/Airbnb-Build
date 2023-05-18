@@ -13,6 +13,7 @@ import RentModal from "@/components/models/RentModal";
 import Hero from "@/components/navbar/Hero";
 import getCities from "./actions/getCities";
 import Categories from "@/components/navbar/Categories";
+import FeedbackModal from "@/components/models/FeedBackModal";
 
 interface HomeProps {
   searchParams: IItinerariesParams;
@@ -37,8 +38,9 @@ export default async function Home({ searchParams }: HomeProps) {
       <SearchModal citiesStart={citiesStart} citiesEnd={citiesEnd} />
       <RegisterModal />
       <LoginModal />
+      <FeedbackModal/>
       <RentModal citiesStart={citiesStart} citiesEnd={citiesEnd} />
-      <Hero currentUser={currentUser} />
+      <Hero currentUser={currentUser} citiesStart={citiesStart} citiesEnd={citiesEnd}/>
       <Categories />
 
       <Container>
