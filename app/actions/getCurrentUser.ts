@@ -7,6 +7,8 @@ export async function getSession() {
 }
 
 export default async function getCurrentUser() {
+  return null;
+  /*
   try {
     const session = await getSession();
 
@@ -36,4 +38,5 @@ export default async function getCurrentUser() {
       error
     );
   }
+  */
 }
