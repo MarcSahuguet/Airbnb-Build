@@ -26,7 +26,7 @@ export const categories = [
   },
   {
     label: "Iles",
-    slug: "plage",
+    slug: "ile",
     icon: PalmtreeIcon,
     description: "This property is on an island!",
   },
@@ -38,7 +38,7 @@ export const categories = [
   },
   {
     label: "Ski",
-    slug: "montagne",
+    slug: "ski",
     icon: FaSkiing,
     description: "This property has skiing activies!",
   },
