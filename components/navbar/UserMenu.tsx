@@ -101,8 +101,10 @@ function UserMenu({ currentUser }: Props) {
               </>
             ) : (
               <>
+              {/*
                 <MenuItem onClick={loginModel.onOpen} label="Se connecter" />
                 <MenuItem onClick={registerModel.onOpen} label="Créer un compte" />
+              */}
                 <MenuItem onClick={() => router.push("https://fr.tipeee.com/hourrail")} label="Faire un don ?" />
                 <MenuItem onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")} label="Rejoindre la team" />
               </>

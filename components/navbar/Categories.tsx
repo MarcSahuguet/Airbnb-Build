@@ -8,6 +8,7 @@ import { Sailboat, Snowflake, Mountain, IceCream, PalmtreeIcon, Castle, BedIcon,
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
 import getMoods from "@/app/actions/getMoods";
+import { useEffect, useRef } from "react";
 
 export const categories = [
   {
@@ -60,7 +61,7 @@ export const categories = [
   },
   {
     label: "Weekend",
-    slug: "weekend",
+    slug: "week-end",
     icon: CalendarHeart,
     description: "This property is accessible in a weekend!",
   },
@@ -87,8 +88,17 @@ type Props = {};
   const category = params?.get("category");
   const pathname = usePathname();
   //const moods = await getMoods();
-
+  const containerRef = useRef<HTMLDivElement>(null);
   const isMainPage = pathname === "/";
+
+  useEffect(() => {
+    if (containerRef.current && category) {
+      const selectedCategory = document.getElementById(category);
+      if (selectedCategory) {
+        selectedCategory.scrollIntoView({ block: "nearest", inline: "start", behavior: "smooth" });
+      }
+    }
+  }, [category]);
 
   if (!isMainPage) {
     return null;
@@ -96,7 +106,12 @@ type Props = {};
 
   return (
     <Container>
-      <div className="pt-5 flex flex-row items-center justify-between overflow-x-auto">
+      <div
+        className="pt-5 flex flex-row items-center justify-between overflow-x-auto snap-x scrollbar-none"
+        ref={containerRef}
+        style={{ scrollSnapType: "x mandatory" }}
+
+      >
         {categories.map((items, index) => (
           <CategoryBox
             key={index}
@@ -104,6 +119,7 @@ type Props = {};
             slug={items.slug}
             label={items.label}
             selected={category === items.slug}
+            id={items.slug} 
           />
         ))}
       </div>

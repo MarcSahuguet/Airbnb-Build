@@ -10,9 +10,10 @@ type Props = {
   label: string;
   slug: string;
   selected?: boolean;
+  id?: string;
 };
 
-function CategoryBox({ icon: Icon, label, slug, selected }: Props) {
+function CategoryBox({ icon: Icon, label, slug, selected, id }: Props) {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -45,8 +46,9 @@ function CategoryBox({ icon: Icon, label, slug, selected }: Props) {
 
   return (
     <div
+      id={id}
       onClick={handleClick}
-      className={`flex flex-col items-center justify-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
+      className={`flex flex-col items-center justify-center gap-2 p-3 min-w-[70px] border-b-2 hover:text-neutral-800 transition cursor-pointer ${
         selected ? "border-b-neutral-800" : "border-transparent"
       } ${selected ? "text-neutral-800" : "text-neutral-500"}`}
     >

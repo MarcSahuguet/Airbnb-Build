@@ -69,7 +69,7 @@ function Footer({}: Props) {
 
           <h5 className="font-bold">A PROPOS</h5>
           <p>Newsroom</p>
-          <p>Learn about new features</p>
+          <p>Nouvelles fonctionalités</p>
           <p>Lettre des fondateurs</p>
           <p>Investisseurs</p>
           <p>(On en a pas)</p>

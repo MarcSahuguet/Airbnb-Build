@@ -1,9 +1,6 @@
 "use client";
-
 import useLoginModel from "@/hook/useLoginModal";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import Button from "../Button";
 import Modal from "./Modal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -12,7 +9,6 @@ import useFeedbackModal from "@/hook/useFeedbackModal";
 type Props = {};
 
 function FeedbackModal({}: Props) {
-  const router = useRouter();
   const modalstate = useFeedbackModal();
   const [isLoading, setIsLoading] = useState(false);
  const [feedback, setFeedback] = useState('');
@@ -22,6 +18,27 @@ function FeedbackModal({}: Props) {
   formState: { errors },
 } = useForm<FieldValues>({
 });
+
+ 
+  const handleSlack = async () => {
+    try {
+      const response = await fetch('/api/slack', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ feedback }),
+      });
+
+      if (response.ok) {
+        console.log('Message posted to Slack successfully!');
+      } else {
+        console.error('Error posting message to Slack:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error posting message to Slack:', error);
+    }
+  };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log('Submitting feedback:', feedback);
@@ -34,47 +51,23 @@ function FeedbackModal({}: Props) {
       modalstate.onClose();
     }, 1300);
 
-    sendToSlack(feedback);
+   handleSlack();
   };
 
   //Send to Slack function
-  const sendToSlack = (feedback: string) => {
-    const data = {
-      text: feedback,
-    };
-    fetch(
-      process.env.NEXT_PUBLIC_SLACK_WEBHOOK_URL as string,
-      {
-        method: 'POST',
-        body: JSON.stringify(data),
-      }
-    ).then((res) => {
-      if (res.status === 200) {
-        console.log('feedback sent to slack');
-      } else {
-        console.log('error sending feedback to slack');
-      }
-    });
-  };
-
+  
 
   const bodyContent = (
-    <div className='flex flex-col items-center justify-center p-3'>
+    <div className='flex flex-col items-center w-full justify-center p-3'>
 
-    <form className='flex flex-col items-center justify-center space-y-4'>
-      <input
-        className='border border-gray-300 rounded-md w-80 h-10 px-3'
-        type='text'
-        placeholder='Nom'
-      />
-      <input className='border border-gray-300 rounded-md w-80 h-10 px-3' type='text' placeholder='Email' />
+    <form className='flex flex-col items-center w-full justify-center space-y-4'>
       <textarea
         className='border border-gray-300 rounded-md w-80 h-40 px-3 pt-1'
         placeholder='Message'
         value={feedback}
         onChange={(e) => setFeedback(e.target.value)}
       />
-      <button onClick={onSubmit} className= ' text-white font-BarlowMedium hover:border-b-hourrail-rouge-orange border-b-4 border-transparent text-xs sm:text-sm pt-2 pb-1 px-4'>
+      <button onClick={onSubmit} className= ' text-white font-BarlowMedium hover:border-b-hourrail-rouge-orange border-b-4 border-transparent text-xs sm:text-sm pb-1 px-4'>
         {isLoading ? <p className=' animate-pulse '>Envoi en cours</p> :  ''}
       </button>
     </form>
