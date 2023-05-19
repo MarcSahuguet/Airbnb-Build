@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   const itineraries = await getItineraries();
   const filteredItineraries = itineraries.filter((itinerary: ItineraryCardType) => {
-    if (category && itinerary.moods[0].name.toLowerCase() !== category && itinerary.moods[1]?.name.toLowerCase() !== category) {
+    if (category && itinerary.moods[0].slug.current !== category && itinerary.moods[1]?.slug.current !== category) {
       return false;
     }
     if (cityStart && itinerary.cityStart.cityName.toLowerCase() !== cityStart) {

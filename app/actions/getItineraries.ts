@@ -22,7 +22,10 @@ import clientConfig from '@/sanity/config/client-config'
           },
           moods[]->{
             _id,
-            name
+            name,
+            slug {
+                current
+            }
           },
           highlight,
           slug,

@@ -4,11 +4,12 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { FaSkiing } from "react-icons/fa";
 import { GiForestCamp } from "react-icons/gi";
 //lucide icons
-import { Sailboat, Snowflake, Mountain, IceCream, PalmtreeIcon, Castle, BedIcon, Fish, CalendarHeart } from "lucide-react";
+import { Sailboat, Snowflake, Mountain, IceCream, PalmtreeIcon, Castle, BedIcon, Home, CalendarHeart } from "lucide-react";
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
 import getMoods from "@/app/actions/getMoods";
 import { useEffect, useRef } from "react";
+
 
 export const categories = [
   {
@@ -25,19 +26,19 @@ export const categories = [
   },
   {
     label: "Iles",
-    slug: "iles",
+    slug: "plage",
     icon: PalmtreeIcon,
     description: "This property is on an island!",
   },
   {
-    label: "Lacs",
-    slug: "lacs",
-    icon: Fish,
+    label: "Patrimoine",
+    slug: "villes-et-patrimoine",
+    icon: Home,
     description: "This property is near a lake!",
   },
   {
     label: "Ski",
-    slug: "ski",
+    slug: "montagne",
     icon: FaSkiing,
     description: "This property has skiing activies!",
   },
@@ -48,8 +49,8 @@ export const categories = [
     description: "This property is an ancient castle!",
   },
   {
-    label: "Camping",
-    slug: "camping",
+    label: "Campagne",
+    slug: "campagne",
     icon: GiForestCamp,
     description: "This property offers camping activities!",
   },
@@ -110,7 +111,6 @@ type Props = {};
         className="pt-5 flex flex-row items-center justify-between overflow-x-auto snap-x scrollbar-none"
         ref={containerRef}
         style={{ scrollSnapType: "x mandatory" }}
-
       >
         {categories.map((items, index) => (
           <CategoryBox

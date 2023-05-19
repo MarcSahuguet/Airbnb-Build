@@ -4,6 +4,9 @@ export type ItineraryCardType = {
   moods: {
     name: string;
     _id: string;
+    slug: {
+      current: string;
+    };
   }[];
   price: number;
   _id: string;
@@ -80,6 +83,9 @@ export type Itinerary = {
   moods: {
     _id: string;
     name: string;
+    slug: {
+      current: string;
+    };
   }[];
   stepsOptions: {
     _id: string;
@@ -87,6 +93,14 @@ export type Itinerary = {
     option: number;
     steps: Step[];
   }[];
+};
+export type MoodType = {
+  _id: string;
+  slug: {
+    current: string;
+  };
+  image: any;
+  name: string;
 };
 
 export type safeItinerary = Omit<Itinerary, "createdAt"> & {
