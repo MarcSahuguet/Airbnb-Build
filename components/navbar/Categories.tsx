@@ -106,6 +106,7 @@ type Props = {};
             label={items.label}
             selected={category === items.slug}
             id={items.slug} 
+            description={items.description}
           />
         ))}
       </div>

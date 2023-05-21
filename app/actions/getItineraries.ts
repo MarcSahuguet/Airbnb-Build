@@ -8,6 +8,7 @@ import clientConfig from '@/sanity/config/client-config'
    
   export default async function getItineraries() {
   
+    
     try {  
       const itineraries = createClient(clientConfig).fetch(
         `*[_type == "itinerary"]{
