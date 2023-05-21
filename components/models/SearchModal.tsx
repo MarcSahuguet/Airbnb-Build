@@ -33,6 +33,7 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
   const searchModel = useSearchModal();
 
   const [location, setLocation] = useState<Itinerary["cityStart"]>();
+  const [destination, setDestination] = useState<Itinerary["cityEnd"]>();
   const [step, setStep] = useState(STEPS.LOCATION);
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
@@ -61,7 +62,7 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
   };
 
   const onSubmit = useCallback(async () => {
-    if (step !== STEPS.DURATION) {
+    if (step !== STEPS.LOCATION) {
       return onNext();
     }
 
@@ -73,11 +74,12 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
 
     const updatedQuery: any = {
       ...currentQuery,
-      locationValue: location?.cityName,
-      guestCount,
-      roomCount,
-      bathroomCount,
-      duration,
+      departureCity: location?.cityName.toLowerCase(),
+      arrivalCity: destination?.cityName.toLowerCase(),
+      //guestCount,
+      //roomCount,
+      //bathroomCount,
+      //duration,
     };
 
     if (dateRange.startDate) {
@@ -115,11 +117,11 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
   ]);
 
   const actionLabel = useMemo(() => {
-    if (step === STEPS.DURATION) {
-      return "Search";
+    if (step === STEPS.LOCATION) {
+      return "Rechercher";
     }
 
-    return "Next";
+    return "Suivant";
   }, [step]);
 
   const secondActionLabel = useMemo(() => {
@@ -127,20 +129,26 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
       return undefined;
     }
 
-    return "Back";
+    return "Retour";
   }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Où sera ton aventure?"
-        subtitle="Trouve LA destination"
+        title="D'où part ton aventure ?"
+        subtitle="Choisis ta ville de départ"
       />
       <CitySelect
         value={location}
-        citiesStart={citiesStart}
-        citiesEnd={citiesEnd}
+        options={citiesStart}
+        placeholder="Ville de départ"
         onChange={(value) => setLocation(value as Itinerary["cityStart"])}
+      />
+       <CitySelect
+        value={destination}
+        options={citiesEnd}
+        placeholder="Où veux tu aller ?"
+        onChange={(value) => setDestination(value as Itinerary["cityStart"])}
       />
       <hr />
       {/* <Map center={location?.cityLocation} />*/}

@@ -40,7 +40,7 @@ function ListingHead({
         }}
         className="w-full sm:h-[60vh] h-[36vh] overflow-hidden rounded-xl relative"
       >
-        <div className="absolute top-3 left-3 z-10">
+        <div className="absolute top-3 left-3 z-[5]">
           <BackButton/>
         </div>
         <Image

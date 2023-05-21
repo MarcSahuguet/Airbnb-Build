@@ -11,9 +11,10 @@ type Props = {
   slug: string;
   selected?: boolean;
   id?: string;
+  description: string;
 };
 
-function CategoryBox({ icon: Icon, label, slug, selected, id }: Props) {
+function CategoryBox({ icon: Icon, label, slug, selected, id, description }: Props) {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -47,6 +48,8 @@ function CategoryBox({ icon: Icon, label, slug, selected, id }: Props) {
   return (
     <div
       id={id}
+      //alt text
+      aria-label={description}
       onClick={handleClick}
       className={`flex flex-col items-center justify-center gap-2 p-3 min-w-[70px] border-b-2 hover:text-hourrail-orange transition cursor-pointer ${
         selected ? "border-b-hourrail-orange" : "border-transparent"

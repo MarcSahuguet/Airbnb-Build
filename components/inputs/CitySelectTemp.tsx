@@ -56,18 +56,17 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
       <Select
         placeholder="Ville de départ"
         isClearable
-        
         isSearchable={true}
         options={citiesStart.map((city) => ({ ...city, label: city.cityName }))}
         onChange={(value) => onSubmit(value as Itinerary["cityStart"],"departure")}
         formatOptionLabel={formatOptionLabel}
+        noOptionsMessage={() => "Aucune ville trouvée"}
         classNames={{
-          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform",
+          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform cursor-pointer",
           input: () => "text-lg",
-          option: () => "text-lg",
-          
+          menu : () => "overflow-hidden !scrollbar-hide",
         }}
-        className="w-full cursor-pointer"
+        className="w-full"
         theme={(theme) => ({
           ...theme,
           borderRadius: 34,
@@ -87,9 +86,9 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
         onChange={(value) => onSubmit(value as Itinerary["cityStart"],"arrival")}
         formatOptionLabel={formatOptionLabel}
         classNames={{
-          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform",
+          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform cursor-pointer",
           input: () => "text-lg",
-          option: () => "text-lg",
+          menu : () => "overflow-hidden",
         }}
         className="w-full cursor-pointer"
         theme={(theme) => ({

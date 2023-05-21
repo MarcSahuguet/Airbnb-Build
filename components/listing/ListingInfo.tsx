@@ -9,6 +9,7 @@ import ListingCategory from "./ListingCategory";
 import Sleep from "../Sleep";
 import Offers from "../Offers";
 import Step from "../Step";
+import linkifyHtml from "linkify-html";
 
 const Map = dynamic(() => import("../Map"), {
   ssr: false,
@@ -55,30 +56,26 @@ function ListingInfo({
 
   return (
     <div className="col-span-4 flex flex-col gap-8">
-      <div className="flex flex-col gap-2">
-        <div className=" text-xl font-semibold flex flex-row items-center gap-2">
+      <div className="flex flex-row gap-6">
+
+        <div className="text-lg font-semibold flex flex-col gap-1">
           <div>Pays traversés</div>
+          <div className="flex flex-row text-sm gap-4 font-light text-neutral-500">
+            {countries.map(
+              (country, index) =>
+                country +
+                (index !== countries.length - 1 ? ', ' : '')
+            )}
+          </div>
         </div>
-        <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
-        {countries.map(
-          (country, index) =>
-            country +
-            (index !== countries.length - 1 ? ', ' : '')
-        )}
+
+        <div className="text-lg font-semibold flex flex-col items-start gap-1">
+          <div>Type de séjour</div>
+          <div className="text-sm flex flex-row gap-4 font-light text-neutral-500">
+            { itinerary.moods.slice(0,2).map((mood) => mood.name).join(", ")}
+          </div>
         </div>
       </div>
-      <hr />
-      
-      {steps.map((step) => (
-        <Step
-          key={step._id}
-          stepCityStart={step.stepCityStart}
-          stepCityEnd={step.stepCityEnd}
-          transportMethod={step.transportMethod}
-          stepTime={step.stepTime}
-          bookingLink={step.bookingLink} 
-        />
-      ))}
       <hr />
       <div className="flex flex-col">
         <p className="text-4xl font-bold text-hourrail-orange">
@@ -107,6 +104,22 @@ function ListingInfo({
           En savoir plus
         </p>
       </div>
+      
+      <hr />
+
+      {steps.map((step) => (
+        <Step
+          key={step._id}
+          stepCityStart={step.stepCityStart}
+          stepCityEnd={step.stepCityEnd}
+          transportMethod={step.transportMethod}
+          stepTime={step.stepTime}
+          bookingLink={step.bookingLink} 
+        />
+      ))}
+    
+    
+       
       
       {/* <Sleep /> */}
       <hr />

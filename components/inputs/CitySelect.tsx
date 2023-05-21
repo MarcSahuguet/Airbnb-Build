@@ -7,12 +7,12 @@ import { Itinerary } from "@/types";
 type Props = {
   //value is cityStart from itinerary
   value?: Itinerary["cityStart"];
-  citiesStart: Itinerary["cityStart"][];
-  citiesEnd: Itinerary["cityEnd"][];
+  options: Itinerary["cityStart"][];
+  placeholder?: string;
   onChange: (value: Itinerary["cityStart"]) => void;
 };
 
-function CitySelect({ value, onChange, citiesStart }: Props) {
+function CitySelect({ value, onChange, placeholder, options }: Props) {
   //const cities = await getCities();
   //console.log(cities);
   //const { getCountries } = useCountries();
@@ -21,9 +21,9 @@ function CitySelect({ value, onChange, citiesStart }: Props) {
    
     <div>
       <Select
-        placeholder="Ville de départ"
+        placeholder={placeholder}
         isClearable
-        options={citiesStart}
+        options={options}
         value={value}
         onChange={(value) => onChange(value as Itinerary["cityStart"])}
         formatOptionLabel={(option: any) => (

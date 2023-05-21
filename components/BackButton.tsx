@@ -6,7 +6,7 @@ const BackButton = () => {
 
     return (
     <button
-        className='z-10 flex items-center gap-0.5 bg-white rounded-full py-1 px-2 font-BarlowMedium hover:underline'
+        className=' flex items-center gap-0.5 bg-white rounded-full py-1 px-2 font-BarlowMedium hover:underline'
         onClick={() => router.back()}
         >
             <svg

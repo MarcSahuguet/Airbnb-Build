@@ -23,8 +23,8 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
        <div className="absolute -z-10 inset-0 w-full h-full bg-gray-800/30"/>
         <Container>
         <div className="py-4 gap-y-10 flex flex-col justify-center">
-          <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
-            <div className="flex md:hidden flex-row items-center gap-2">
+          <div className="relative flex flex-row items-center justify-between gap-3 md:gap-0">
+            <div className="flex flex-row items-center gap-2">
               <Link href="https://www.instagram.com/hourrail/">
                 <FaInstagram className="text-3xl text-white"/>
               </Link>
@@ -42,12 +42,13 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
              */}
           </div>
         </div>
-        <span className="absolute -z-10 left-0 right-0 m-auto px-3 bottom-40 md:bottom-22 text-white text-2xl sm:text-4xl font-bold text-center font-default max-w-3xl ">
-            Trouve ta prochaine aventure {" "} sans avion et sans voiture
-          </span>
+        
         </Container>
 
-        <div className="absolute inset-x-0 mx-auto max-w-xs md:max-w-xl bottom-6 ">
+        <div className="absolute flex flex-col inset-x-0 mx-auto max-w-xs md:max-w-xl bottom-6 gap-5 ">
+          <span className="-z-10 -px-3 text-white text-2xl justify-center sm:text-4xl font-bold text-center font-default italic max-w-3xl ">
+            Trouve ta prochaine aventure {" "} sans avion et sans voiture !
+          </span>
         {/*
         <Search />
         */}

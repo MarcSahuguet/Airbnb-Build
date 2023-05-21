@@ -40,7 +40,8 @@ export default async function Home({ searchParams }: HomeProps) {
   });
 
   const currentUser = await getCurrentUser();
-  const {citiesStart, citiesEnd} = await getCities();
+  const {citiesStart, citiesEnd} = await getCities(cityStart);
+ 
 
   if (filteredItineraries.length === 0) {
     return (

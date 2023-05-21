@@ -77,7 +77,7 @@ function ListingCard({
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col gap-1.5 w-full">
-        <div className="sm:aspect-square aspect-video w-full relative overflow-hidden rounded-xl">
+        <div className="aspect-video w-full relative overflow-hidden rounded-xl">
           <Image
             fill
             className="object-cover h-full w-full group-hover:scale-110 transition"

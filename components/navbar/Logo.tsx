@@ -20,24 +20,24 @@ function Logo({ Hero }: Props) {
               width={120}
               height={120}
               src='/Logo_hourrail.png'
-              className='block md:hidden self-center -ml-2.5 hover:animate-waving hover:rotate-2 transition-all duration-200 cursor-pointer'
+              className='block md:hidden self-center -ml-2.5 shake hover:rotate-2 transition-all duration-200 cursor-pointer'
             />
             <Image
               alt='Mood image'
               width={150}
               height={150}
               src='/Logo_hourrail.png'
-              className='hidden md:block self-center -ml-2.5 hover:animate-waving hover:rotate-2 transition-all duration-200 cursor-pointer'
+              className='hidden md:block absolute self-center top-0 mx-auto shake hover:rotate-2 transition-all duration-200 cursor-pointer'
             />
           </>
         ) : (
           <>
             <Image
               alt='Mood image'
-              width={180}
-              height={180}
+              width={170}
+              height={170}
               src='/Logo_hourrail.png'
-              className='hidden sm:block hover:animate-waving hover:rotate-2 transition-all duration-200'
+              className='hidden sm:block shake hover:rotate-2 transition-all duration-200'
             />
 
             <Image

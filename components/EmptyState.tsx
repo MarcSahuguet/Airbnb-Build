@@ -13,8 +13,8 @@ type Props = {
 };
 
 function EmptyState({
-  title = "No exact matches",
-  subtitle = "Try changing or removing some of your filters.",
+  title = "Pas de voyages pour ces critères",
+  subtitle = "On y travaille promis !",
   showReset,
 }: Props) {
   const router = useRouter();
@@ -31,7 +31,7 @@ function EmptyState({
         {showReset && (
           <Button
             outline
-            label="Remove all filters"
+            label="Retirer les filtres"
             onClick={() => router.push("/")}
           />
         )}
