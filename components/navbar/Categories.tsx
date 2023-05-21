@@ -1,10 +1,8 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { FaSkiing } from "react-icons/fa";
-import { GiForestCamp } from "react-icons/gi";
 //lucide icons
-import { Sailboat, Snowflake, Mountain, IceCream, PalmtreeIcon, Castle, BedIcon, Home, CalendarHeart } from "lucide-react";
+import { Sailboat, Snowflake, Mountain, PartyPopper, PalmtreeIcon, Castle, TreeDeciduous, Backpack, CalendarHeart, MoonStar } from "lucide-react";
 import CategoryBox from "../CategoryBox";
 import Container from "../Container";
 import getMoods from "@/app/actions/getMoods";
@@ -15,7 +13,7 @@ export const categories = [
   {
     label: "Plage",
     slug: "plage",
-    icon: IceCream,
+    icon: PalmtreeIcon,
     description: "This property is close to the beach!",
   },
   {
@@ -25,22 +23,16 @@ export const categories = [
     description: "This property is in the countryside!",
   },
   {
-    label: "Iles",
-    slug: "ile",
-    icon: PalmtreeIcon,
+    label: "Festif",
+    slug: "festif",
+    icon: PartyPopper,
     description: "This property is on an island!",
   },
   {
     label: "Patrimoine",
     slug: "villes-et-patrimoine",
-    icon: Home,
+    icon: Castle,
     description: "This property is near a lake!",
-  },
-  {
-    label: "Ski",
-    slug: "ski",
-    icon: FaSkiing,
-    description: "This property has skiing activies!",
   },
   {
     label: "Chateau",
@@ -51,11 +43,11 @@ export const categories = [
   {
     label: "Campagne",
     slug: "campagne",
-    icon: GiForestCamp,
+    icon: TreeDeciduous,
     description: "This property offers camping activities!",
   },
   {
-    label: "Laponie",
+    label: "Polaire",
     slug: "polaire",
     icon: Snowflake,
     description: "This property is in arctic environment!",
@@ -63,7 +55,7 @@ export const categories = [
   {
     label: "Weekend",
     slug: "week-end",
-    icon: CalendarHeart,
+    icon: Backpack,
     description: "This property is accessible in a weekend!",
   },
   {
@@ -73,9 +65,9 @@ export const categories = [
     description: "This property offers sailing activities!",
   },
   {
-    label: "Nuit",
+    label: "Train de nuit",
     slug: "train-de-nuit",
-    icon: BedIcon,
+    icon: MoonStar,
     description: "This property is near a train station!",
   },
 ];

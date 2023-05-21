@@ -8,6 +8,7 @@ import UserMenu from "./UserMenu";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 import CitySelectTemp from "../inputs/CitySelectTemp";
+import Image from "next/image";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -18,8 +19,8 @@ type Props = {
 function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
 
   return (
-    <div className="relative w-full z-10 shadow-sm bg-hero bg-cover bg-top sm:bg-center backdrop-brightness-75" style={{height:"45vh"}}>
-      
+    <div className="relative w-full z-10 shadow-sm bg-hero bg-cover bg-top sm:bg-center bg-blend-darken" style={{height:"45vh"}}>
+       <div className="absolute -z-10 inset-0 w-full h-full bg-gray-800/30"/>
         <Container>
         <div className="py-4 gap-y-10 flex flex-col justify-center">
           <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
@@ -41,12 +42,12 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
              */}
           </div>
         </div>
-        <span className="absolute -z-10 left-0 right-0 m-auto px-3 bottom-28 md:bottom-20 text-white text-xl sm:text-4xl font-bold text-center font-integraBold max-w-3xl ">
+        <span className="absolute -z-10 left-0 right-0 m-auto px-3 bottom-40 md:bottom-20 text-white text-2xl sm:text-4xl font-bold text-center font-default max-w-3xl ">
             Trouve ta prochaine aventure {" "} sans avion et sans voiture
           </span>
         </Container>
 
-        <div className="absolute inset-x-0 mx-auto max-w-xs md:max-w-xl -bottom-5 ">
+        <div className="absolute inset-x-0 mx-auto max-w-xs md:max-w-xl bottom-6 ">
         {/*
         <Search />
         */}

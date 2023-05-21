@@ -48,16 +48,16 @@ function UserMenu({ currentUser }: Props) {
           Poster un intinéraire
         </div>
         <div
-          className="hidden md:block text-sm font-semibold  py-2.5 px-4 rounded-full bg-white bg-opacity-30 hover:bg-neutral-100 transition cursor-pointer"
+          className="hidden md:block text-sm font-semibold  py-2.5 px-4 rounded-full bg-white bg-opacity-70 hover:bg-neutral-100 transition cursor-pointer"
           onClick={() => feedbackModal.onOpen()}
         >
           Proposer une amélioration 
         </div>
         <div
           onClick={toggleOpen}
-          className="bg-white p-2 border-[1px] flex flex-row items-center gap-2.5 rounded-full cursor-pointer hover:shadow-md transition" //md:py-1 md:pl-2.5 md:pr-1 
+          className= "flex flex-row items-center gap-2.5 p-2 hover:bg-white  hover:bg-opacity-20 rounded-full cursor-pointer transition" //md:py-1 md:pl-2.5 md:pr-1 
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu className="text-white" />
           
           <div className="hidden">
             {currentUser ? (

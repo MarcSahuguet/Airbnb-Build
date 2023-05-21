@@ -52,10 +52,11 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
   );
   
   return (
-    <div className="flex flex-col md:flex-row gap-1 md:gap-3 justify-center">
+    <div className="flex flex-col md:flex-row gap-2 md:gap-4 justify-center">
       <Select
         placeholder="Ville de départ"
         isClearable
+        
         isSearchable={true}
         options={citiesStart.map((city) => ({ ...city, label: city.cityName }))}
         onChange={(value) => onSubmit(value as Itinerary["cityStart"],"departure")}

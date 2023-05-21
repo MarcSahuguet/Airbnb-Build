@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Heading from "../Heading";
 import HeartButton from "../HeartButton";
+import BackButton from "../BackButton";
 
 type Props = {
   title:  { countryName: string; cityName: string},
@@ -39,6 +40,9 @@ function ListingHead({
         }}
         className="w-full sm:h-[60vh] h-[36vh] overflow-hidden rounded-xl relative"
       >
+        <div className="absolute top-3 left-3 z-10">
+          <BackButton/>
+        </div>
         <Image
           src={imageSrc}
           alt="image"

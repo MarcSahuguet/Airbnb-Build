@@ -101,6 +101,36 @@ function ListingCard({
             {reservationDate || data.moods.slice(0,2).map((mood) => mood.name).join(", ")}
           </div>
         </div>
+        <div className='flex justify-start'>
+        {data.stepsOptions.steps.map((step, index, steps) => (
+          <div
+            key={`Transport method  ${index}`}
+            className='flex h-6 w-10 items-center justify-start gap-1'
+          >
+            <Image
+              alt='Transport method'
+              width={20}
+              height={20}
+              src={step.transportMethod.icon}
+              className='object-cover'
+            />
+            <p className='font-BarlowMedium text-base text-black sm:text-lg'>
+              {index !== steps.length - 1 && (
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 320 512'
+                  fill='black'
+                  width={13}
+                  height={13}
+                  className='rotate-180'
+                >
+                  <path d='M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z' />
+                </svg>
+              )}
+            </p>
+          </div>
+        ))}
+      </div>
         {/*
         <div className="flex flex-row items-center gap-">
           <div className="flex gap-1 font-semibold">

@@ -58,7 +58,7 @@ const Step = ({
           </p>
         </div>
         <a onClick={handleSubmit} href={bookingLink} target='_blank' rel='noopener noreferrer'>
-          <button className='sm:px-6 border-y-4 border-transparent bg-hourrail-orange p-2 font-BarlowSemiBold text-sm text-white drop-shadow-md hover:border-b-hourrail-rouge-orange sm:text-lg'>Je réserve mon billet !</button>
+          <button className='rounded-full px-23 sm:px-5 border-y-4 border-transparent bg-hourrail-orange p-2 font-default font-semibold text-sm text-white drop-shadow-md hover:border-b-hourrail-rouge-orange sm:text-base'>Je réserve mon billet !</button>
         </a>
       </div>
     </div>

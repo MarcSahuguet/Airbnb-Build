@@ -107,9 +107,7 @@ function ListingInfo({
           En savoir plus
         </p>
       </div>
-      <hr />
-      <p className="text-lg font-light text-neutral-500">{description}</p>
-      <hr />
+      
       {/* <Sleep /> */}
       <hr />
       {/* <Offers /> 

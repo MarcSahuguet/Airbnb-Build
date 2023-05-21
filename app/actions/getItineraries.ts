@@ -17,7 +17,9 @@ import clientConfig from '@/sanity/config/client-config'
           cityEnd->{cityName, countryName},
           stepsOptions[0]->{
             steps[]->{
-              transportMethod->{icon}
+              transportMethod->{
+                "icon": icon.asset->url,
+              },
             },
           },
           moods[]->{

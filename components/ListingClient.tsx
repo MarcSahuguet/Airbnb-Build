@@ -111,7 +111,6 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
     <Container>
      
       <div className="max-w-screen-lg mx-auto pt-16">
-      <BackButton/>
         <div className="flex flex-col gap-6">
           <ListingHead
             title={itinerary.cityEnd}
@@ -128,7 +127,7 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
               steps={steps}
             />
             
-            <div className="order-first mb-10 md:order-last md:col-span-3">
+            <div className=" mb-10 md:order-last md:col-span-3">
              <MapOpen steps={steps} />
              {/*
               <ListingReservation
