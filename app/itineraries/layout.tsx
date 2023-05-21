@@ -8,6 +8,7 @@ import LoginModal from "@/components/models/LoginModal";
 import RentModal from "@/components/models/RentModal";
 import ToastContainerBar from "@/components/ToastContainerBar";
 import getCities from "../actions/getCities";
+import FeedbackModal from "@/components/models/FeedBackModal";
 
 export const metadata = {
   title: "Hourrail !",
@@ -29,10 +30,11 @@ export default async function Layout({
         <ToastContainerBar />
         <SearchModal citiesStart={citiesStart} citiesEnd={citiesEnd} />
         <RegisterModal />
+        <FeedbackModal/>
         <LoginModal />
         <RentModal citiesStart={citiesStart} citiesEnd={citiesEnd}  />
         <Navbar currentUser={currentUser} />
-        <div className="pt-14">{children}</div>
+        <div className="pt-14">{children}</div> 
     </div>
   );
 }

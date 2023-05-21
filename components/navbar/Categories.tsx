@@ -35,12 +35,6 @@ export const categories = [
     description: "This property is near a lake!",
   },
   {
-    label: "Chateau",
-    slug: "chateau",
-    icon: Castle,
-    description: "This property is an ancient castle!",
-  },
-  {
     label: "Campagne",
     slug: "campagne",
     icon: TreeDeciduous,
