@@ -97,9 +97,11 @@ function ListingCard({
           <div className="font-semibold text-lg">
             {data.cityEnd.cityName}, {data.cityEnd.countryName}
           </div>
+{/*
           <div className="font-light text-neutral-500">
-            {reservationDate || data.moods.slice(0,2).map((mood) => mood.name).join(", ")}
+            {reservationDate}
           </div>
+*/}
         </div>
         <div className='flex justify-start'>
         {data.stepsOptions.steps.map((step, index, steps) => (
