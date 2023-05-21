@@ -42,7 +42,7 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
              */}
           </div>
         </div>
-        <span className="absolute -z-10 left-0 right-0 m-auto px-3 bottom-40 md:bottom-20 text-white text-2xl sm:text-4xl font-bold text-center font-default max-w-3xl ">
+        <span className="absolute -z-10 left-0 right-0 m-auto px-3 bottom-40 md:bottom-22 text-white text-2xl sm:text-4xl font-bold text-center font-default max-w-3xl ">
             Trouve ta prochaine aventure {" "} sans avion et sans voiture
           </span>
         </Container>
