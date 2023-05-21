@@ -160,8 +160,8 @@ function RentModal({citiesEnd, citiesStart}: Props) {
         />
         <CitySelect
           value={location}
-          citiesEnd={citiesEnd}
-          citiesStart={citiesStart}
+          options={citiesStart}
+          placeholder="Ville de départ"
           onChange={(value) => setCustomValue("location", value)}
         />
         <Map center={location?.latlng} />
