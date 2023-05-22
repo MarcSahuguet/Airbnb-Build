@@ -66,9 +66,8 @@ function Footer({}: Props) {
         </div>
 
         <div className="space-y-4">
-
           <h5 className="font-bold">A PROPOS</h5>
-          <p>Newsroom</p>
+          <p><Link href="/mentions">Mentions légales</Link></p>
           <p>Nouvelles fonctionalités</p>
           <p>Investisseurs</p>
           <p>(On en a pas)</p>
@@ -82,13 +81,12 @@ function Footer({}: Props) {
         </div>
 
           <div className="space-y-4">
-          <h5 className="font-bold">COMMUNAUTE</h5>
-          <p>Rejoindre la team</p>
-          <p>Faire un don</p>
-          <p>Envoyer de l&apos;amour</p>
+            <h5 className="font-bold">COMMUNAUTE</h5>
+            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform" target="_blank">Devenir bénévole</a></p>
+            <p><a href="https://www.tipeee.com/hourrail" target="_blank">Faire un don</a></p>
+            <p><a href="mailto:media@hourrail.voyage?subject=Contribution Vidéo">Contribution video</a></p>
           </div>
 
-        
       </div>
     </ClientOnly>
   );

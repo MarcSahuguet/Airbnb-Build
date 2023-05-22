@@ -78,11 +78,9 @@ function ListingInfo({
       </div>
       <hr />
       <div className="flex flex-col">
-        <p className="text-4xl font-bold text-hourrail-orange">
-          Iti<span className="text-black">nérail</span>
-        </p>
-        <p className="text-neutral-500 pt-3">
-        Les temps de trajet sont une estimation et peuvent varier.
+        
+        <p className="text-neutral-500 pt-1 text-sm">
+        🕔 Les temps de trajet sont une estimation et peuvent varier.
         Chaque lien de réservation renvoie vers le site qui nous
         semble être le plus approprié pour le trajet concerné.
         Cependant, il n&apos;est probablement pas adapté si vous
@@ -100,13 +98,18 @@ function ListingInfo({
         chaque fois que vous réservez un billet. Cela nous
         permettra de pérenniser HOURRAIL !
         </p>
+      
+        {/*
         <p className="text-black font-bold underline pt-3 cursor-pointer">
           En savoir plus
         </p>
+        */}
       </div>
       
       <hr />
-
+      <p className="text-4xl font-bold text-hourrail-orange">
+          Iti<span className="text-black">nérail</span>
+        </p>
       {steps.map((step) => (
         <Step
           key={step._id}

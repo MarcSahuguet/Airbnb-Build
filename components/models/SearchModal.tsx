@@ -144,6 +144,7 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
         placeholder="Ville de départ"
         onChange={(value) => setLocation(value as Itinerary["cityStart"])}
       />
+      {/*
        <CitySelect
         value={destination}
         options={citiesEnd}
@@ -151,6 +152,7 @@ function SearchModal({citiesStart, citiesEnd}: Props) {
         onChange={(value) => setDestination(value as Itinerary["cityStart"])}
       />
       <hr />
+      */}
       {/* <Map center={location?.cityLocation} />*/}
     </div>
   );

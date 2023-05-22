@@ -129,7 +129,7 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
             
             <div className="mb-10 md:order-last md:col-span-3 ">
              <MapOpen steps={steps} />
-             <YoutubeVideo videoId="2gQPsQNwbog" />
+             {/* <YoutubeVideo videoId="2gQPsQNwbog" /> */}
 
              {/*
               <ListingReservation

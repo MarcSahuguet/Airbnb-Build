@@ -48,10 +48,16 @@ function UserMenu({ currentUser }: Props) {
           Poster un intinéraire
         </div>
         <div
-          className="hidden md:block text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-70 hover:bg-neutral-100 transition cursor-pointer"
+          className="hidden text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-70 hover:bg-neutral-100 transition cursor-pointer"
           onClick={() => feedbackModal.onOpen()}
         >
           Proposer une amélioration 
+        </div>
+        <div
+          className="hidden md:block text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-70 hover:bg-neutral-100 transition cursor-pointer"
+          onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")}
+        >
+          Devenir Bénévole
         </div>
         <div
           onClick={toggleOpen}
@@ -75,7 +81,7 @@ function UserMenu({ currentUser }: Props) {
         </div>
       </div>
       {isOpen && (
-        <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
+        <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[14vw] bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
@@ -105,8 +111,9 @@ function UserMenu({ currentUser }: Props) {
                 <MenuItem onClick={loginModel.onOpen} label="Se connecter" />
                 <MenuItem onClick={registerModel.onOpen} label="Créer un compte" />
               */}
-                <MenuItem onClick={() => router.push("https://fr.tipeee.com/hourrail")} label="Faire un don ?" />
-                <MenuItem onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")} label="Rejoindre la team" />
+                <MenuItem onClick={() => router.push("https://fr.tipeee.com/hourrail")} label="Faire un don" />
+                <MenuItem onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")} label="Devenir bénévole" />
+                <MenuItem onClick={() => router.push(" https://www.youtube.com/watch?v=4-342f4gCas&list=PLOFI93cA3xnxPxX6u5jCEBZ1cqhJgYNZa")} label="Découvrir le podcast" />
               </>
             )}
           </div>

@@ -19,7 +19,7 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
 
   return (
     <div className="relative w-full z-10 shadow-sm bg-hero bg-cover bg-top sm:bg-center bg-blend-darken" style={{height:"45vh"}}>
-       <div className="absolute -z-10 inset-0 w-full h-full bg-gray-800/30"/>
+       <div className="absolute -z-10 inset-0 w-full h-full bg-gray-800/20"/>
         <Container>
         <div className="py-4 gap-y-10 flex flex-col justify-center">
           <div className="relative flex flex-row items-center justify-between gap-3 md:gap-0">
