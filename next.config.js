@@ -4,7 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "res.cloudinary.com"],
+    domains: ["lh3.googleusercontent.com", "res.cloudinary.com", "placehold.co"], 
+
     remotePatterns: [
       {
         protocol: 'https',

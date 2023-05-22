@@ -15,6 +15,7 @@ import ListingInfo from "./listing/ListingInfo";
 import ListingReservation from "./listing/ListingReservation";
 import { categories } from "./navbar/Categories";
 import MapOpen from "./MapOpen";
+import YoutubeVideo from "./listing/YoutubeVideo";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -128,6 +129,7 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
             
             <div className="mb-10 md:order-last md:col-span-3 ">
              <MapOpen steps={steps} />
+             <YoutubeVideo videoId="2gQPsQNwbog" />
 
              {/*
               <ListingReservation
@@ -139,27 +141,9 @@ function ListingClient({ itinerary, currentUser, params }: Props) {
                 disabled={isLoading}
                 disabledDates={disableDates}
               />
-              */}
-              
-              <div className="flex flex-col ">
-                <h2 className="text-xl font-semibold my-5">
-                  Interrail en Europe : comment ça marche ?
-                </h2>
-                <div className="">
-                  <iframe
-                    //src={`https://www.youtube.com/embed/${videos[currentVideoIndex].snippet.resourceId.videoId}?autoplay=1`}
-                    src="https://www.youtube.com/embed/2gQPsQNwbog?autoplay=1"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="rounded-lg w-full aspect-video"
-                  ></iframe>
-                </div>
-              </div>
+              */} 
+             
             </div>
-   
-            
-        
           </div>
         </div>
       </div>

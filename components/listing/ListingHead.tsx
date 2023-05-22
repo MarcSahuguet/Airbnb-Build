@@ -1,7 +1,7 @@
 "use client";
 
-import useCountries from "@/hook/useCountries";
 import { SafeUser } from "@/types";
+import { Carousel } from "react-responsive-carousel";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Heading from "../Heading";
@@ -23,7 +23,12 @@ function ListingHead({
   id,
   currentUser,
 }: Props) {
-
+  const images = [
+    "https://cdn.sanity.io/images/l1a05fsu/production/0aca26df26ab8fb51b2984f502c6ad93a36555bb-1500x996.jpg",
+    "https://cdn.sanity.io/images/l1a05fsu/production/0aca26df26ab8fb51b2984f502c6ad93a36555bb-1500x996.jpg",
+    "https://cdn.sanity.io/images/l1a05fsu/production/0aca26df26ab8fb51b2984f502c6ad93a36555bb-1500x996.jpg",
+    "https://cdn.sanity.io/images/l1a05fsu/production/0aca26df26ab8fb51b2984f502c6ad93a36555bb-1500x996.jpg",
+  ];
   return (
     <>
       <Heading
@@ -43,6 +48,15 @@ function ListingHead({
         <div className="absolute top-3 left-3 z-[5]">
           <BackButton/>
         </div>
+        {/*
+        <Carousel showThumbs={false} autoPlay className="h-full w-full">
+          {images.map((image, index) => (
+            <div key={index}>
+              <Image src={image} alt="image" fill className="object-cover" />
+            </div>
+          ))}
+        </Carousel>
+        */}
         <Image
           src={imageSrc}
           alt="image"

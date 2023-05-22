@@ -8,7 +8,6 @@ import UserMenu from "./UserMenu";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 import CitySelectTemp from "../inputs/CitySelectTemp";
-import Image from "next/image";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -25,10 +24,10 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
         <div className="py-4 gap-y-10 flex flex-col justify-center">
           <div className="relative flex flex-row items-center justify-between gap-3 md:gap-0">
             <div className="flex flex-row items-center gap-2">
-              <Link href="https://www.instagram.com/hourrail/">
+              <Link href="https://www.instagram.com/hourrail/" target="_blank">
                 <FaInstagram className="text-3xl text-white"/>
               </Link>
-              <Link href="https://www.linkedin.com/company/hourrail/">
+              <Link href="https://www.linkedin.com/company/hourrail/" target="_blank">
                 <FaLinkedin className="text-3xl text-white" href="https://www.linkedin.com/company/hourrail/"/>
               </Link>
             </div>
