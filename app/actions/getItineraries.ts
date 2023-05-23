@@ -33,7 +33,7 @@ import clientConfig from '@/sanity/config/client-config'
           highlight,
           slug,
           _id
-        } | order(highlight desc, cityStart.countryName desc)`
+        } | order(highlight desc, cityStart.countryName desc)`, "force-cache"
       )
         
       // return itineraries with mood.name  == params.mood
