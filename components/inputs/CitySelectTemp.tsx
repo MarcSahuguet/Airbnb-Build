@@ -3,6 +3,8 @@ import { Itinerary } from "@/types";
 import { useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Select from "react-select";
+import classNames from 'classnames';
+import { is } from "date-fns/locale";
 
 type Props = {
   citiesStart: Itinerary["cityStart"][];
@@ -12,7 +14,8 @@ type Props = {
 export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
   const router = useRouter();
   const params = useSearchParams();
-
+  const departure = params?.get("departureCity");
+  const departureValue = citiesStart.find((city) => city.cityName.toLowerCase() === departure);
   const onSubmit = useCallback((value: Itinerary["cityStart"], where:string) => {
       let currentQuery = {};
       let updatedQuery = {};
@@ -57,14 +60,15 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
         placeholder="Ville de départ"
         isClearable
         isSearchable={true}
+        value={departureValue && { ...departureValue, label: departureValue.cityName }}
         options={citiesStart.map((city) => ({ ...city, label: city.cityName }))}
         onChange={(value) => onSubmit(value as Itinerary["cityStart"],"departure")}
         formatOptionLabel={formatOptionLabel}
         noOptionsMessage={() => "Aucune ville trouvée"}
         classNames={{
-          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform cursor-pointer",
+          control: () => "p-3 py-2 border-4 !border-hourrail-orange hover:scale-105 duration-150 transform cursor-pointer",
           input: () => "text-lg",
-          menu : () => "overflow-hidden !scrollbar-hide",
+          menu : () => "overflow-hidden !scrollbar-hide",          
         }}
         className="w-full"
         theme={(theme) => ({
@@ -74,7 +78,6 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
             ...theme.colors,
             primary: "#ED4A3A",
             primary25: "#ffe4e6",
-      
           },
         })}
       />

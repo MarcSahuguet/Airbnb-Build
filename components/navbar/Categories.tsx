@@ -14,55 +14,55 @@ export const categories = [
     label: "Plage",
     slug: "plage",
     icon: PalmtreeIcon,
-    description: "This property is close to the beach!",
+    description: "Destinations à la plage",
   },
   {
     label: "Montagne",
     slug: "montagne",
     icon: Mountain,
-    description: "This property is in the countryside!",
+    description: "Destinations à la montagne",
   },
   {
     label: "Festif",
     slug: "festif",
     icon: PartyPopper,
-    description: "This property is on an island!",
+    description: "Destinations festives",
   },
   {
     label: "Patrimoine",
     slug: "villes-et-patrimoine",
     icon: Castle,
-    description: "This property is near a lake!",
+    description: "Destinations avec un patrimoine riche",
   },
   {
     label: "Campagne",
     slug: "campagne",
     icon: TreeDeciduous,
-    description: "This property offers camping activities!",
+    description: "Destinations à la campagne",
   },
   {
     label: "Polaire",
     slug: "polaire",
     icon: Snowflake,
-    description: "This property is in arctic environment!",
+    description: "Destinations avec un froid polaire",
   },
   {
     label: "Weekend",
     slug: "week-end",
     icon: Backpack,
-    description: "This property is accessible in a weekend!",
+    description: "Destinations pour un week-end",
   },
   {
     label: "Voile",
     slug: "voile",
     icon: Sailboat,
-    description: "This property offers sailing activities!",
+    description: "Destinations accessibles en voilier",
   },
   {
     label: "Train de nuit",
     slug: "train-de-nuit",
     icon: MoonStar,
-    description: "This property is near a train station!",
+    description: "Destinations accessibles en train de nuit",
   },
 ];
 
@@ -94,7 +94,7 @@ type Props = {};
   return (
     <Container>
       <div
-        className="pt-5 flex flex-row items-center justify-between overflow-x-auto snap-x scrollbar-none"
+        className="pt-5 flex flex-row items-center justify-between overflow-x-auto md:overflow-x-clip snap-x scrollbar-none"
         ref={containerRef}
         style={{ scrollSnapType: "x mandatory" }}
       >

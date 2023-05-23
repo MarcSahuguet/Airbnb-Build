@@ -25,10 +25,10 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
           <div className="relative flex flex-row items-center justify-between gap-3 md:gap-0">
             <div className="flex flex-row items-center gap-2">
               <Link href="https://www.instagram.com/hourrail/" target="_blank">
-                <FaInstagram className="text-3xl text-white"/>
+                <FaInstagram className="text-3xl text-white hover:text-hourrail-orange transform"/>
               </Link>
               <Link href="https://www.linkedin.com/company/hourrail/" target="_blank">
-                <FaLinkedin className="text-3xl text-white" href="https://www.linkedin.com/company/hourrail/"/>
+                <FaLinkedin className="text-3xl text-white hover:text-hourrail-orange transform" href="https://www.linkedin.com/company/hourrail/"/>
               </Link>
             </div>
             <Logo Hero />
@@ -44,7 +44,7 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
         
         </Container>
 
-        <div className="absolute flex flex-col inset-x-0 mx-auto max-w-xs md:max-w-xl bottom-6 gap-5 ">
+        <div className="absolute flex flex-col inset-x-0 mx-auto max-w-xs md:max-w-xl bottom-8 gap-5 ">
           <span className="-z-10 -px-3 text-white text-2xl justify-center sm:text-4xl font-bold text-center font-default italic max-w-3xl ">
             Trouve ta prochaine aventure {" "} sans avion et sans voiture !
           </span>
@@ -54,7 +54,6 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
         <CitySelectTemp
         citiesStart={citiesStart}
         citiesEnd={citiesEnd}
-       
       />
           </div>
         {/*
