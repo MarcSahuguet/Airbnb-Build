@@ -17,7 +17,7 @@ function Loader({}: Props) {
       {/* Loading gif positioned in the center of the screen with absolute positioning + Loading text */}
       <div className="relative flex-col flex justify-center">
         <Image
-          src="/loader_white.gif"
+          src="/Loader_white.gif"
           alt="Loading"
           width={400}
           height={200}

@@ -12,6 +12,7 @@ import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
+import {Youtube, HeartHandshake, Lightbulb, PersonStanding} from "lucide-react";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -54,10 +55,17 @@ function UserMenu({ currentUser }: Props) {
           Proposer une amélioration 
         </div>
         <div
+          className="hidden items-center text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-70 hover:bg-neutral-100 transition cursor-pointer"
+          onClick={() => router.push("https://www.youtube.com/watch?v=4-342f4gCas&list=PLOFI93cA3xnxPxX6u5jCEBZ1cqhJgYNZa")}
+        >
+          <Youtube size={20} className="inline-block mr-2" />
+              Découvre notre podcast        
+          </div>
+        <div
           className="hidden md:block text-sm font-semibold py-2.5 px-4 rounded-full bg-white bg-opacity-70 hover:bg-neutral-100 transition cursor-pointer"
           onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")}
         >
-          Devenir Bénévole
+          Deviens Bénévole
         </div>
         <div
           onClick={toggleOpen}
@@ -81,7 +89,7 @@ function UserMenu({ currentUser }: Props) {
         </div>
       </div>
       {isOpen && (
-        <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[14vw] bg-white overflow-hidden right-0 top-12 text-sm z-10">
+        <div className="absolute rounded-xl shadow-md bg-white overflow-hidden right-0 top-12 text-sm z-10">
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
@@ -111,10 +119,10 @@ function UserMenu({ currentUser }: Props) {
                 <MenuItem onClick={loginModel.onOpen} label="Se connecter" />
                 <MenuItem onClick={registerModel.onOpen} label="Créer un compte" />
               */}
-                <MenuItem onClick={() => router.push("https://fr.tipeee.com/hourrail")} label="Faire un don" />
-                <MenuItem onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")} label="Devenir bénévole" />
-                <MenuItem onClick={() => router.push(" https://www.youtube.com/watch?v=4-342f4gCas&list=PLOFI93cA3xnxPxX6u5jCEBZ1cqhJgYNZa")} label="Découvrir le podcast" />
-              <MenuItem onClick={() => feedbackModal.onOpen()} label="Faire un retour" />
+                <MenuItem onClick={() => router.push("https://fr.tipeee.com/hourrail")} label={<div className="flex flex-row items-center gap-2.5"><HeartHandshake size={20} />Faire un don</div>} />
+                <MenuItem onClick={() => router.push("https://docs.google.com/forms/d/e/1FAIpQLSefj9Xx7QiOMkeghtajWdYFexWH6E1hSCsIpG4K-ms2vNnsUA/viewform")} label={<div className="flex flex-row items-center whitespace-nowrap gap-2.5"><PersonStanding size={20} />Devenir bénévole</div>} />
+                <MenuItem onClick={() => router.push("https://www.youtube.com/watch?v=4-342f4gCas&list=PLOFI93cA3xnxPxX6u5jCEBZ1cqhJgYNZa")} label={<div className="flex flex-row items-center gap-2.5"><Youtube size={20} />Le podcast</div>} />
+                <MenuItem onClick={() => feedbackModal.onOpen()} label={<div className="flex flex-row items-center gap-2.5"><Lightbulb size={20} />J'ai une idée</div>} />
               </>
             )}
           </div>

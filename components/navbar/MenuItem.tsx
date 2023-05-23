@@ -4,7 +4,7 @@ import React from "react";
 
 type Props = {
   onClick: () => void;
-  label: string;
+  label: string | React.ReactElement;
 };
 
 function MenuItem({ onClick, label }: Props) {

@@ -14,7 +14,7 @@ function Search({}: Props) {
   const params = useSearchParams();
   const { getByValue } = useCountries();
 
-  const locationValue = params?.get("locationValue");
+  const locationValue = params?.get("departureCity");
   const startDate = params?.get("startDate");
   const endDate = params?.get("endDate");
   const guestCount = params?.get("guestCount");
@@ -23,7 +23,6 @@ function Search({}: Props) {
     if (locationValue) {
       return locationValue;
     }
-    return "Ville de départ";
   }, [locationValue]);
 
   const durationLabel = useMemo(() => {
@@ -56,7 +55,11 @@ function Search({}: Props) {
       className="bg-white border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer"
     >
       <div className="flex flex-row items-center justify-between">
-        <div className="text-sm font-semibold px-6">{locationLabel}</div>
+        {locationValue ? (
+          <div className="text-sm font-semibold px-6"><p className="text-gray-700 font-light text-xs">Depuis:</p>{" "}{locationLabel}</div>
+        ) : (
+          <div className="text-sm font-semibold px-6">Ville de Départ</div>
+        )}
         {/*
         <div className="hidden sm:block text-sm font-semibold px-6 border-l-[1px] flex-1 text-center">
           {durationLabel}
@@ -65,7 +68,7 @@ function Search({}: Props) {
         <div className="text-sm pl-0 pr-2 text-gray-600 flex flex-row items-center gap-3">
           {/* <div className="hidden sm:block text-center">{guessLabel}</div> */}
           <div className="p-2 bg-hourrail-orange rounded-full text-white">
-            <BiFilter size={18} />
+            <BiSearch size={18} />
           </div>
         </div>
       </div>

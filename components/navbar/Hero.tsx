@@ -31,7 +31,9 @@ function Hero({ currentUser, citiesEnd, citiesStart }: Props) {
                 <FaLinkedin className="text-3xl text-white hover:text-hourrail-orange transform" href="https://www.linkedin.com/company/hourrail/"/>
               </Link>
             </div>
-            <Logo Hero />
+            <div className="absolute inset-x-0 top-[1px] mx-auto w-fit">
+              <Logo Hero />
+            </div>
             <UserMenu currentUser={currentUser} />
           </div>
           

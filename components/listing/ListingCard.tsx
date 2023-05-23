@@ -5,7 +5,7 @@ import { ItineraryCardType, SafeReservation, SafeUser, safeItinerary } from "@/t
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 import Button from "../Button";
 import HeartButton from "../HeartButton";
@@ -30,6 +30,7 @@ function ListingCard({
   currentUser,
 }: Props) {
   const router = useRouter();
+  const params = useSearchParams();
   const { getByValue } = useCountries();
   data.price = 100;
   const location = getByValue(data.cityEnd.countryName);
@@ -73,7 +74,7 @@ function ListingCard({
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      onClick={() => router.push(`/itineraries/${data.slug.current}`)}
+      onClick={() => router.push(`/itineraries/${data.slug.current}?departureCity=${params?.get("departureCity")}`)}
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col gap-1.5 w-full">

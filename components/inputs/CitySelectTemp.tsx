@@ -3,7 +3,6 @@ import { Itinerary } from "@/types";
 import { useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Select from "react-select";
-import classNames from 'classnames';
 import { is } from "date-fns/locale";
 
 type Props = {
@@ -66,7 +65,7 @@ export default function CitySelectTemp({ citiesStart, citiesEnd }: Props) {
         formatOptionLabel={formatOptionLabel}
         noOptionsMessage={() => "Aucune ville trouvée"}
         classNames={{
-          control: () => "p-3 py-2 border-4 !border-hourrail-orange hover:scale-105 duration-150 transform cursor-pointer",
+          control: () => "p-3 py-2 border-2 hover:scale-105 duration-150 transform cursor-pointer",
           input: () => "text-lg",
           menu : () => "overflow-hidden !scrollbar-hide",          
         }}
